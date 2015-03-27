@@ -1,0 +1,55 @@
+One-Zero
+
+=====================================
+DESCRIPTION:
+
+This is a simple program that accepts input from a file or from the command line via 
+standard in. It converts binary bits into the correspondin ASCII values and checks for an 
+even parity bit.
+
+=====================================
+
+USAGE:
+
+cat <filename> | one-zero
+
+where filename contains binary bits
+
+or simply 
+
+one-zero filename
+
+where agian filename contains the binary bits
+
+=====================================
+
+CHANGELOG:
+v0.2.2
+Fixed the make file and a bug with string comparison.
+
+v0.2.1
+Fixed the ascii string array - it was missing one.
+Added a check to see if the <filename> was provided or a '-'.
+Code clean up.
+
+v0.2
+Program now works.
+Made a powers function to eliminate the need to to link math.h
+Fixed the output and math issues with the different loops.
+Made the program accept from standard in and with a given file.
+Create an ascii string array to handle the ascii characters 0-32.
+
+v0.1.1
+Got familiar with C thanks to these labs.
+Got most of the functionality just need the binary to decimal conversion.
+Added a sample filename to test the output.
+
+v0.1
+Initial commit - very alpha
+Not very familiar with C
+
+=====================================
+
+LICENSE:
+
+See LICENSE

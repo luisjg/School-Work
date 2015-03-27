@@ -1,0 +1,109 @@
+====================================================
+
+AUTHOR:
+
+Luis Guzman
+
+Lab2: Launch-Tube
+
+Used the code snippet found here for copying the argv array
+https://stackoverflow.com/questions/5206840/duplicating-an-array-of-strings-or-copying-them-to-another-array/5206927#5206927
+
+====================================================
+
+DESCRIPTION:
+
+LAUNCH:
+A command-line tool written in C that launches another process (child process). This child process executes a particular program.
+
+TUBE:
+A command-line tool written in C that launches two child processes, and sets up a pipe between them for inter-process communication.
+
+====================================================
+
+USAGE & SAMPLE OUTPUT:
+
+LAUNCH:
+$ ./launch /path/to/command
+
+$ ./launch /bin/ls -l
+/bin/ls $$ 5011
+total 64
+-rwxrwxr-x. 1 luis luis 11340 Sep 20 12:23 launch
+-rw-rw-r--. 1 luis luis   864 Sep 18 19:48 launch.c
+-rw-rw-r--. 1 luis luis  6976 Sep 20 12:23 launch.o
+-rw-rw-r--. 1 luis luis  1107 Sep 11 20:53 LICENSE
+-rw-rw-r--. 1 luis luis   427 Sep 18 19:45 Makefile
+-rw-rw-r--. 1 luis luis   830 Sep 18 19:49 README
+-rwxrwxr-x. 1 luis luis 12123 Sep 20 12:23 tube
+-rw-rw-r--. 1 luis luis  1890 Sep 20 12:20 tube.c
+-rw-rw-r--. 1 luis luis  9328 Sep 20 12:23 tube.o
+/bin/ls $? 0
+
+TUBE:
+
+$ ./tube /path/to/command1 , /path/to/command2
+
+$ cat filename
+This is line one.
+This is line two.
+This is line three.
+This is line four.
+
+$ ./tube /bin/cat filename , /usr/bin/head -2
+
+/bin/cat 	    $$ 1934
+/usr/bin/head 	$$ 1935
+This is line one.
+This is line two.
+/bin/cat 	    $? 0
+/usr/bin/head 	$? 0
+
+====================================================
+
+CHANGELOG:
+v0.3.3
+Clean up the make file and add another line in the README description.
+
+v0.3.2
+Code clean up on tube.c
+
+V0.3.2
+Added error checking on tube.c
+
+v0.3.1
+Cleaned up the memory on tube.c
+
+v0.3
+Final commit for tube.c.
+Edit launch.c to make it more readable.
+Add file filename with sample input.
+
+v0.2.4
+Fix the code base, producer was printing twice.
+Add a source for a code snippet.
+Fix error output in launch.c.
+
+v0.2.3
+Initial commit to tube.c
+
+v0.2.2
+Include usage and initial sample output in README 
+
+v0.2.1
+Clean up #includes for launch.c
+
+v0.2
+Update README and Makefile
+Some code clean-up
+
+v0.1
+Initial commit.
+
+====================================================
+
+LICENSE:
+
+See LICENSE
+
+====================================================

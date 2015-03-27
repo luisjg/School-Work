@@ -1,0 +1,45 @@
+====================================================
+
+AUTHOR:
+
+Luis Guzman
+
+Lab6: Daemon
+
+How to get current working directory from calling process.
+https://stackoverflow.com/questions/298510/how-to-get-the-current-directory-in-a-c-program/298518#298518
+
+====================================================
+
+DESCRIPTION:
+
+Two programs written in C. One is a daemon - spritid.c - and another - mole.c - is a simple program that emits one line as output. The daemon creates and kills child process. These two programs will act as a whack a mole game whereby the daemon "whacks" a "mole" based on the signals being sent to it.
+
+NOTE: For the purpose of this lab the lab6.log is created in the lab6 folder.
+
+====================================================
+
+USAGE & SAMPLE OUTPUT:
+
+
+
+====================================================
+
+CHANGELOG:
+v0.1.4 Edit the make file.
+
+v0.1.3 Catches signals but the logic is wrong for making a mole during the signal. Mole works. See NOTE in the Description section.
+
+v0.1.2 Figured out that exec isn't working through debugging. Still not working
+
+V0.1.1 Mole is now writting to lab6.log, Daemon is not working still.
+
+v0.1 Initial Commit - Got most of the daemon written but it's not daemoning. Mole is done.
+
+====================================================
+
+LICENSE:
+
+See LICENSE
+
+====================================================

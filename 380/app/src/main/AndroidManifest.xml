@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.comp380.csun.comp380" >
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".SplashActivity"
+            android:noHistory="true"
+            android:theme="@style/PasswordsTheme" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".AddExpenseActivity"
+            android:label="Add Expense"
+            android:theme="@style/ThemeForDialogs" >
+        </activity>
+        <activity
+            android:name=".LoginActivity"
+            android:theme="@style/PasswordsTheme" >
+        </activity>
+        <activity
+            android:name=".WelcomeActivity"
+            android:theme="@style/PasswordsTheme" >
+        </activity>
+        <activity
+            android:name=".ExpenseDisplayActivity"
+            android:label="Expense Display"
+            android:theme="@style/ThemeForDialogs" >
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity android:name=".SettingsActivity">
+        </activity>
+        <activity
+            android:name=".AddIncomeActivity"
+            android:label="Add Income"
+            android:theme="@style/ThemeForDialogs" >
+        </activity>
+        <activity
+            android:name=".GoalsActivity"
+            android:label="Goals"
+            android:theme="@style/ThemeForDialogs" >
+        </activity>
+        <activity
+            android:name=".IncomeActivity"
+            android:label="Income"
+            android:theme="@style/ThemeForDialogs" >
+        </activity>
+        <activity
+            android:name=".EditIncomeActivity"
+            android:label="@string/title_activity_edit_income"
+            android:theme="@style/ThemeForDialogs" >
+        </activity>
+        <activity android:name=".EditExpenseActivity"
+            android:label="Edit Expense"
+            android:theme="@style/ThemeForDialogs">
+
+        </activity>
+        <activity android:name=".LicenseActivity"
+            android:label="@string/title_activity_license">
+
+        </activity>
+    </application>
+
+</manifest>

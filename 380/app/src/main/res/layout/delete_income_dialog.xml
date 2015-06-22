@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_background">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+    <TextView
+        android:id="@+id/warningText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/app_background"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:paddingLeft="10sp"
+        android:layout_marginBottom="10dp" />
+    <Button
+        android:id="@+id/warningNo"
+        android:layout_width="140dp"
+        android:layout_height="50dp"
+        android:text="@string/dialog_delete_no"
+        android:layout_below="@+id/warningText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        style="@style/Buttons" />
+    <Button
+        android:id="@+id/warningYes"
+        android:layout_width="140dp"
+        android:layout_height="50dp"
+        android:text="@string/dialog_delete_yes"
+        android:layout_below="@+id/warningText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        style="@style/Buttons" />
+    </RelativeLayout>
+</LinearLayout>

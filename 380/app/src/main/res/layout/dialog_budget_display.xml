@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_background"
+    android:weightSum="1">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:id="@+id/categoryLabel"
+        android:layout_above="@+id/budgetLimitEdit"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textColor="@android:color/white"
+        android:paddingBottom="15dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="2dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/categoryTextView"
+        android:layout_gravity="center_horizontal"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/categoryLabel"
+        android:layout_marginLeft="23dp"
+        android:layout_marginStart="23dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:textColor="@color/white"
+        android:paddingBottom="15dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Limit"
+        android:id="@+id/budgetLimitText"
+        android:layout_alignBaseline="@+id/budgetLimitEdit"
+        android:layout_alignBottom="@+id/budgetLimitEdit"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textColor="@android:color/white"
+        android:paddingBottom="5dp"
+        android:layout_marginLeft="2dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/budgetLimitEdit"
+        android:layout_below="@+id/categoryTextView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:hint="$10"
+        android:inputType="number"
+        android:layout_alignLeft="@+id/categoryTextView"
+        android:layout_alignStart="@+id/categoryTextView"
+        android:maxLength="6"
+        android:background="@android:color/white"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp" />
+
+    <Button
+        android:layout_width="140dp"
+        android:layout_height="50dp"
+        android:text="@string/cancel_button_text"
+        android:id="@+id/cancel_button"
+        android:padding="5dp"
+        android:onClick="onClick"
+        style="@style/Buttons"
+        android:layout_alignTop="@+id/createCat_button"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="140dp"
+        android:layout_height="50dp"
+        android:text="@string/createCat_button_text"
+        android:id="@+id/createCat_button"
+        android:padding="5dp"
+        android:onClick="onClick"
+        style="@style/Buttons"
+        android:layout_marginTop="33dp"
+        android:layout_below="@+id/budgetLimitEdit"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+</RelativeLayout>

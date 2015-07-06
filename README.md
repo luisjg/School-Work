@@ -8,3 +8,6 @@ The languages in this repository are:
 - C/C++
 
 - Java
+
+## License
+Licensed under The MIT License (MIT). See License for more information.

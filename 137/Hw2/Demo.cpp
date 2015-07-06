@@ -13,12 +13,12 @@ int main(){
 	IntegerSet* test3;
 	IntegerSet* test4;
 	IntegerSet test5(SIZE, sample);
-	
+
 	for(int i = 0; i < SIZE; i++){
 		test1.insertElement(i);
 		test2.insertElement(i);
 	}
-	
+
 	//test2.deleteElement(0);
 	test2.deleteElement(3);
 	test2.deleteElement(5);

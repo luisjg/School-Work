@@ -1,4 +1,4 @@
-//Luis Guzman
+//L G
 //CSIS 137
 //Homework 3
 
@@ -19,7 +19,7 @@ istream& operator>>(istream& input, FeetInches& temp2){
 	cout << "Please enter" << endl
 		<< "Feet: ";
 	input >> temp2.feet;
-	cout << "Inches: "; 
+	cout << "Inches: ";
 	input >> temp2.inches;
 	temp2.checker();
 

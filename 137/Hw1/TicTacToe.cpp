@@ -1,4 +1,4 @@
-//Luis Guzman
+//L G
 //CSIS 137
 
 #include <iostream>
@@ -53,7 +53,7 @@ int turns = 1;
 
 cout << endl;
 		while(gameStatus == false){
-		
+
 		printTable();
 
 			if(player == p1){
@@ -96,7 +96,7 @@ cout << endl;
 */
 
 void TicTacToe::printPrompt(const int& i){
-	
+
 	cout << "Player " << i << " please select a valid value for " << endl
                 << "ROW" << endl;
                 cin >> pRow;
@@ -156,7 +156,7 @@ bool TicTacToe::isGoodInput(){
 bool TicTacToe::isWinner(const int& player){
 
 	/*
-	
+
 	  0 1 2
 	0 * * *
 	1 * * *
@@ -224,5 +224,5 @@ bool TicTacToe::isFree(){
 		else{
 			return true;
 			}
-			
+
 }

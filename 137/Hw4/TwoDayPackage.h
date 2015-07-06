@@ -1,4 +1,4 @@
-//Luis Guzman
+//L G
 //CSIS 137
 //Homework #4
 
@@ -87,8 +87,8 @@ class TwoDayPackage : public Package{
 private:
 	double flatFee;
 public:
-	TwoDayPackage(const string&, const string&, const string&, const string&, int, 
-		const string&, const string&, const string&, const string&, int, double = 0.0, 
+	TwoDayPackage(const string&, const string&, const string&, const string&, int,
+		const string&, const string&, const string&, const string&, int, double = 0.0,
 		double = 0.0, double = 0.0);
 	void setFlatFee(double);
 	double getFlatFee()const;

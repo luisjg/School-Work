@@ -1,4 +1,4 @@
-//Luis Guzman
+//L G
 //CSIS 137
 
 #ifndef TICTACTOE_H

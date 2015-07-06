@@ -1,12 +1,12 @@
-//Luis Guzman
+//L G
 //CSIS 137
 //Homework #5
 
 #include "Package.h"
 #include <iostream>
 
-Package::Package(const string& sName, const string& sAddress, const string& sCity, 
-	const string& sState, int sZip, const string& rName, const string& rAddress, 
+Package::Package(const string& sName, const string& sAddress, const string& sCity,
+	const string& sState, int sZip, const string& rName, const string& rAddress,
 	const string& rCity, const string& rState, int rZip, double pWeight, double pCost)
 	: sendName(sName), sendAddress(sAddress), sendCity(sCity), sendState(sState), receiveName(rName),
 	receiveAddress(rAddress), receiveCity(rCity), receiveState(rState)

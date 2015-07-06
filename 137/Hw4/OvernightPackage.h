@@ -1,4 +1,4 @@
-//Luis Guzman
+//L G
 //CSIS 137
 //Homework #4
 
@@ -80,15 +80,15 @@
 
 
 #ifndef OVERNIGHTPACKAGE_H
-#define OVERNIGHTPACKAGE_H 
+#define OVERNIGHTPACKAGE_H
 #include "Package.h"
 #include <string>
 class OvernightPackage : public Package {
 private:
 	double addtlFeePerOunce;
 public:
-	OvernightPackage(const string&, const string&, const string&, const string&, int, 
-		const string&, const string&, const string&, const string&, int, double = 0.0, 
+	OvernightPackage(const string&, const string&, const string&, const string&, int,
+		const string&, const string&, const string&, const string&, int, double = 0.0,
 		double = 0.0, double = 0.0);
 	void setAdditionalFee(double);
 	double getAdditionalFee()const;

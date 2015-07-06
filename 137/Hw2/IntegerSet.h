@@ -21,7 +21,7 @@
 
 
 class IntegerSet{
-	
+
 	private:
 	int *set;
 	int size;
@@ -30,7 +30,7 @@ class IntegerSet{
 	IntegerSet(int);//constructor
 	IntegerSet(int, int[]);//constructor that accepts an integer array
 	~IntegerSet();//destructor
-	
+
 	IntegerSet* unionOfSets(const IntegerSet&);//1 for now...
 	IntegerSet* intersectionOfSets(const IntegerSet&);//2 for now...
 	void insertElement(int);//3

@@ -1,4 +1,4 @@
-//Luis Guzman
+//L G
 //CSIS 137
 //Homework 3
 
@@ -42,7 +42,7 @@ cout << "test4 is\n" << test4 << "\n" << endl;
 if(test3 == test4){
 	cout << "test3 and test4 are equal.\n" << endl;
 }
-//evalute the objects with the overloaded != operator 
+//evalute the objects with the overloaded != operator
 if(test3 != test4){
 	cout << "test3 and test4 are not equal.\n" << endl;
 }

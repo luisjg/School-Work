@@ -1,4 +1,4 @@
-//Luis Guzman
+//L G
 //CSIS 137
 
 #include<iostream>
@@ -55,7 +55,7 @@ cout << "Welcome to the best Tic Tac Toe game!" << endl
 
 void inputValidation(int& selection){
 	while (selection !=1 && selection != 2){
-		cout << "You have entered an invalid value.\n" 
+		cout << "You have entered an invalid value.\n"
 		<< "Please try again." << endl
 		<< "Please enter 1 to play or 2 to quit" << endl;
 		cin >> selection;

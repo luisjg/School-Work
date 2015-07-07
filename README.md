@@ -10,4 +10,4 @@ The languages in this repository are:
 - Java
 
 ## License
-Licensed under The MIT License (MIT). See License for more information.
+Licensed under The MIT License (MIT). See <a href="https://github.com/klinster/School-Work/blob/master/LICENSE">License</a> for more information.

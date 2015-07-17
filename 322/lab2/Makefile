@@ -1,4 +1,4 @@
-# Luis Guzman
+# L G
 # Project: Launch-Tube
 
 FLAGS=-g

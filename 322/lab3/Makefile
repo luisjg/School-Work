@@ -1,4 +1,4 @@
-# Name: Luis Guzman
+# Name: L G
 # Project: Catcher
 
 FLAGS=-g
@@ -6,7 +6,7 @@ CC=gcc
 
 all: catcher
 
-catcher: 
+catcher:
 	$(CC) $(FLAGS) -c $@.c
 	$(CC) $(FLAGS) -o $@ $@.o
 

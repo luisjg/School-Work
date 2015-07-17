@@ -1,4 +1,4 @@
-# Name: Luis Guzman
+# Name: L G
 # Project: Elephant
 
 all: matrix_add matrix_gen

@@ -1,4 +1,4 @@
-# Name: Luis Guzman
+# Name: L G
 # Project: Daemon
 
 FLAGS=-g

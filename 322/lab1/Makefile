@@ -1,4 +1,4 @@
-# Name: Luis Guzman
+# Name: L G
 # Project: Time and Forking Children
 
 # This is a Makefile for my lab assignment. It allows me to easily and accurately rebuild
@@ -6,7 +6,7 @@
 
 
 # EXECUTABLES is a Make Variable (similar to an environment variable) that lists all the
-# "executables" associated with the lab. 
+# "executables" associated with the lab.
 EXECUTABLES=time-4-baby-and-me
 SRC=time-4-baby-and-me.c
 OBJ=time-4-baby-and-me.o
@@ -21,7 +21,7 @@ CFLAGS=-g
 all: $(EXECUTABLES)
 
 
-# On the following lines (which _must_ start with a tab), are the commands I need to type -- 
+# On the following lines (which _must_ start with a tab), are the commands I need to type --
 # each time my source file is modified.
 $(EXECUTABLES):
 	$(CC) $(CFLAGS) -c $(SRC)

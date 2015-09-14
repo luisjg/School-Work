@@ -1,0 +1,100 @@
+body {
+	background-color: #006699;
+}
+
+a:visited {
+	color: yellow;
+}
+
+a:hover {
+	color: white;
+}
+/*Purple background*/
+#site-container {
+	background-color: #666699;
+	padding: 10px;
+	margin: 10px;
+	border: solid 6px #333;
+}
+
+/*Header items*/
+#header {
+	max-width: 95%;
+	margin: auto;
+	background-color: #0099CC;
+	text-align: right;
+	border: solid 1px #333;
+}
+
+#header h2 {
+	font-size: 1.2em;
+}
+
+#header h1, #header h2 {
+	margin-right: 20px;
+}
+
+/*Blog container and sidebar parent*/
+#content {
+	max-width: 95%;
+	margin: auto;
+}
+
+/*Blog area parent*/
+#blog-container {
+	float: left;
+	max-width: 80%;
+}
+
+/*Individual blog posts*/
+.blog-post {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	background-color: #CC6699;
+	border: solid 3px #333;
+	text-align: justify;
+	text-justify: inter-word;
+	float: left;
+}
+
+.blog-post img {
+	padding-left: 10px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	float: right;
+}
+
+.blog-post p {
+		margin: 10px;
+}
+
+.blog-post .post-title {
+	margin: 10px;
+}
+
+/*Friends list parentr*/
+#sidebar {
+	background-color: #FF0005;
+	margin-top: 20px;
+	padding-left: 50px;
+	padding-right: 50px;
+	float: right;
+	border: solid 4px #333;
+}
+
+#friend-container {
+	max-width: 100%;
+}
+
+#friend-container h2 {
+	text-align: center;
+}
+
+#friend-container ul, #friend-container li {
+	padding: 0;
+}
+
+/*A float reset*/
+#cleared {
+	clear: both;
+}

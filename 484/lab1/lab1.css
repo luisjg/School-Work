@@ -19,7 +19,6 @@ a:hover {
 
 /*Header items*/
 #header {
-	max-width: 95%;
 	margin: auto;
 	background-color: #0099CC;
 	text-align: right;
@@ -34,7 +33,7 @@ a:hover {
 	margin-right: 20px;
 }
 
-/*Blog container and sidebar parent*/
+/*Herder container, Blog container and sidebar parent*/
 #content {
 	max-width: 95%;
 	margin: auto;
@@ -72,7 +71,7 @@ a:hover {
 	margin: 10px;
 }
 
-/*Friends list parentr*/
+/*Friends list parent*/
 #sidebar {
 	background-color: #FF0005;
 	margin-top: 20px;
@@ -82,6 +81,7 @@ a:hover {
 	border: solid 4px #333;
 }
 
+/*Friend list text*/
 #friend-container {
 	max-width: 100%;
 }

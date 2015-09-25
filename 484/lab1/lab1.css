@@ -1,5 +1,5 @@
 body {
-	background-color: #006699;
+	background-color: #1e4872;
 }
 
 a:visited {
@@ -9,18 +9,28 @@ a:visited {
 a:hover {
 	color: white;
 }
+
+html body *:hover {
+	color: yellow;
+}
 /*Purple background*/
 #site-container {
-	background-color: #666699;
+	background-color: #c2b3d2;
 	padding: 10px;
 	margin: 10px;
 	border: solid 6px #333;
 }
 
+/*Herder container, Blog container and sidebar parent*/
+#content {
+	max-width: 95%;
+	margin: auto;
+}
+
 /*Header items*/
 #header {
 	margin: auto;
-	background-color: #0099CC;
+	background-color: #a6c1df;
 	text-align: right;
 	border: solid 1px #333;
 }
@@ -33,12 +43,6 @@ a:hover {
 	margin-right: 20px;
 }
 
-/*Herder container, Blog container and sidebar parent*/
-#content {
-	max-width: 95%;
-	margin: auto;
-}
-
 /*Blog area parent*/
 #blog-container {
 	float: left;
@@ -49,7 +53,7 @@ a:hover {
 .blog-post {
 	margin-top: 20px;
 	margin-bottom: 20px;
-	background-color: #CC6699;
+	background-color: #edc5c6;
 	border: solid 3px #333;
 	text-align: justify;
 	text-justify: inter-word;
@@ -64,16 +68,16 @@ a:hover {
 }
 
 .blog-post p {
-		margin: 10px;
+		margin: 0 30px 20px 30px;
 }
 
 .blog-post .post-title {
-	margin: 10px;
+	margin: 30px 0 0 30px;
 }
 
 /*Friends list parent*/
 #sidebar {
-	background-color: #FF0005;
+	background-color: #ff2501;
 	margin-top: 20px;
 	padding-left: 50px;
 	padding-right: 50px;
@@ -86,7 +90,7 @@ a:hover {
 	max-width: 100%;
 }
 
-#friend-container h2 {
+#friend-container h1 {
 	text-align: center;
 }
 
@@ -97,4 +101,13 @@ a:hover {
 /*A float reset*/
 #cleared {
 	clear: both;
+}
+
+@media screen and (max-width: 1254px) {
+	#blog-container{
+		max-width: 73%;
+	}
+	#friend-container {
+		max-width: 95%;
+	}
 }

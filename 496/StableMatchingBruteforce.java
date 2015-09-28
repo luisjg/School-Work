@@ -14,57 +14,65 @@ public class StableMatchingBruteforce{
 			printMenu();
 			input = keyboard.next().charAt(0);
 			if(input == 'A'){
-				System.out.println("Reading from input.txt...");
-				System.out.println("Items read:");
+				printCase(input);
 				try{
 					reader = new FileInputStream(file);
 					int inChar;
 					// read first item size n of the lists and number of people
-					int count = reader.read() - '0';
-					System.out.println("N = " + count);
-					// initialize array with n we just read
-					int[][] priorityList = new int[count][count];
-					// start filling up the array
-					int j = 0;
-					// for(int i = 0; i<count; i++){
-						while(reader.available() > 0){
-							inChar = reader.read() -'0';
-							if(inChar >= 0 && inChar <= 9){
-								// priorityList[j][i] = inChar;
-								System.out.print(inChar);
-								if((j%count) == 0){
-									System.out.println("\nJ = " + j);
-									j++;
-								}
+				  int count = reader.read() - '0';
+					// initialize arrays with n we just read
+					int[][] preferenceList = new int[2*count][count];
+					// start filling up the preferences
+					int i=0;
+					int j=0;
+					while(reader.available() > 0){
+						inChar = reader.read() - '0';
+						if(inChar >= 0 && inChar <= 9){
+							preferenceList[j][i] = inChar;
+							i++;
+							if(i == count){
+								i=0;
+								j++;
+								if(j == 2*count)
+									j=0;
 							}
 						}
-					// }
-					System.out.println();
-					// reader.close();
-					// System.gc();
+					}
+					reader.close();
 				} catch(IOException e){
 					e.printStackTrace();
 				}
 
 			}
 			else if(input == 'B'){
-				System.out.println("You chose B.\n");
+				printCase(input);
 			}
 			else if(input == 'C'){
+				System.out.println("What is the size of n?");
+			}
+			else if(input == 'D'){
 				System.out.println("Good Bye.");
 			}
 			else{
 				System.out.println("Error! Try Again!");
 			}
-		}while(input != 'C');
+		} while(input != 'D');
 	}
 
 	public static void printMenu(){
 		System.out.println("Welcome to Stable Matching Bruteforce");
 		System.out.println("--------------------------------------");
 		System.out.println("Please Select an option");
-		System.out.println("A) Read from input.txt");
-		System.out.println("B) Generate Randomly");
-		System.out.println("C) Quit");
+		System.out.println("A) Read first test case");
+		System.out.println("B) Read second test case");
+		System.out.println("C) Generate Randomly");
+		System.out.println("D) Quit");
+	}
+
+	public static void printCase(char flag){
+		if(flag == 'A')
+			System.out.println("Reading first test case...");
+		else
+			System.out.println("Reading second test case...");
 	}
 }

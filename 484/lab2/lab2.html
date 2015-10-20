@@ -1,25 +1,42 @@
 <!DOCTYPE>
 <html>
 <head>
+  <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <script type="text/javascript">
-
   function displayAlert(){
-    var first = document.getElementById("first").value;
-    var last = document.getElementById("last").value;
-    var sid = document.getElementById("sid").value;
-    var bio = document.getElementById("bio").value;
-    alert("First: " + first + "\nLast: " + last +
-          "\nSID:  " + sid + "\nBio:  " + bio);
+    var input = document.getElementsByTagName("Input");
+    alert("First: " + input.item(0).value +
+          "\nLast: " + input.item(1).value +
+          "\nSID:  " + input.item(2).value +
+          "\nBio:  " + input.item(3).value);
   }
   </script>
+  <style>
+    #myform{
+      padding: 20px;
+    }
+    .info{
+      color: black;
+      padding-right: 25px;
+    }
+  </style>
 </head>
 <body>
   <form id="myform" onsubmit="displayAlert()" action="">
-    First: <input type="text" name="first" id="first"><br>
-    Last: <input type="text" name="last" id="last"><br>
-    SID: <input type="text" name="sid" id="sid"><br>
-    Bio: <input type="text" name="bio" id="bio"><br>
-    <input type="submit" name="submit" value="Submit">
-</form>
+    <div class="form-group">
+      <label class="info" for="formGroupInputSmall">First:</label><input type="text" name="first">
+    </div>
+    <div class="form-group">
+      <label class="info" for="formGroupInputSmall">Last:</label><input type="text" name="last">
+    </div>
+    <div class="form-group">
+      <label class="info" for="formGroupInputSmall">SID:&nbsp;&nbsp;</label><input type="text" name="sid">
+    </div>
+    <div class="form-group">
+      <label class="info" for="formGroupInputSmall">Bio:&nbsp;&nbsp;</label><input type="text" name="bio">
+    </div>
+    <p>Hours worked this week: <span class="hours"></span><br>
+    <button type="submit" class="btn btn-default" name="submit">Submit</button>
+  </form>
 </body>
 </html>

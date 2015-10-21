@@ -3,6 +3,7 @@
 <head>
   <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <script type="text/javascript">
+  var mResult="";
   function displayAlert(){
     var input = document.getElementsByTagName("Input");
     alert("First: " + input.item(0).value +
@@ -10,8 +11,46 @@
           "\nSID:  " + input.item(2).value +
           "\nBio:  " + input.item(3).value);
   }
+  function onDisplay(x){
+    var display = document.getElementById("display");
+    switch(x){
+        case "c":
+          x="";
+          mResult="";
+          display.value="";
+        break;
+        case "/":
+        case "*":
+        case "-":
+        case "+":
+          mResult+=x;
+          display.value="";
+        break;
+        default:
+          mResult+=x;
+          display.value+=x;
+    }
+  }
+
+  function calculate(){
+    display.value="";
+    mResult=eval(mResult);
+    display.value=mResult;
+  }
+
+  function displayHoursWorked(){
+    document.getElementsById("hours").innerHTML=mResult;
+  }
   </script>
   <style>
+    body{
+      background-color: #F1F1F1;
+    }
+    #form-container{
+      float:left;
+      background-color: white;
+      max-width: 50%;
+    }
     #myform{
       padding: 20px;
     }
@@ -19,24 +58,56 @@
       color: black;
       padding-right: 25px;
     }
+    #calculator{
+      background-color: white;
+      float: right;
+    }
   </style>
 </head>
 <body>
-  <form id="myform" onsubmit="displayAlert()" action="">
-    <div class="form-group">
-      <label class="info" for="formGroupInputSmall">First:</label><input type="text" name="first">
-    </div>
-    <div class="form-group">
-      <label class="info" for="formGroupInputSmall">Last:</label><input type="text" name="last">
-    </div>
-    <div class="form-group">
-      <label class="info" for="formGroupInputSmall">SID:&nbsp;&nbsp;</label><input type="text" name="sid">
-    </div>
-    <div class="form-group">
-      <label class="info" for="formGroupInputSmall">Bio:&nbsp;&nbsp;</label><input type="text" name="bio">
-    </div>
-    <p>Hours worked this week: <span class="hours"></span><br>
-    <button type="submit" class="btn btn-default" name="submit">Submit</button>
-  </form>
+  <div id="form-container">
+    <form id="myform" onsubmit="displayAlert()" action="">
+      <div class="form-group">
+        <label class="info" for="formGroupInputSmall">First:</label><input type="text" name="first">
+      </div>
+      <div class="form-group">
+        <label class="info" for="formGroupInputSmall">Last:</label><input type="text" name="last">
+      </div>
+      <div class="form-group">
+        <label class="info" for="formGroupInputSmall">SID:&nbsp;&nbsp;</label><input type="text" name="sid">
+      </div>
+      <div class="form-group">
+        <label class="info" for="formGroupInputSmall">Bio:&nbsp;&nbsp;</label><input type="text" name="bio">
+      </div>
+      <p>Hours worked this week: <span id="hours"></span><br>
+      <button type="submit" class="btn btn-default" name="submit">Submit</button>
+    </form>
+  </div>
+  <div id="calculator">
+    <form onsubmit="displayHoursWorked()" action="">
+      <input type="text" id="display">
+      <br>
+      <input type="button" value="1" id="keys" onclick="onDisplay('1')">
+      <input type="button" value="2" id="keys" onclick="onDisplay('2')">
+      <input type="button" value="3" id="keys" onclick="onDisplay('3')">
+      <input type="button" value="+" id="keys" onclick="onDisplay('+')">
+      <br>
+      <input type="button" value="4" id="keys" onclick="onDisplay('4')">
+      <input type="button" value="5" id="keys" onclick="onDisplay('5')">
+      <input type="button" value="6" id="keys" onclick="onDisplay('6')">
+      <input type="button" value="-" id="keys" onclick="onDisplay('-')">
+      <br>
+      <input type="button" value="7" id="keys" onclick="onDisplay('7')">
+      <input type="button" value="8" id="keys" onclick="onDisplay('8')">
+      <input type="button" value="9" id="keys" onclick="onDisplay('9')">
+      <input type="button" value="/" id="keys" onclick="onDisplay('/')">
+      <br>
+      <input type="button" value="c" id="keys" onclick="onDisplay('c')">
+      <input type="button" value="0" id="keys" onclick="onDisplay('0')">
+      <input type="button" value="=" id="equal" onclick="calculate()">
+      <input type="button" value="*" id="keys" onclick="onDisplay('*')"><br>
+      <button type="submit" class="btn btn-default" name="Submit">Save</button>
+    </form>
+  </div>
 </body>
 </html>

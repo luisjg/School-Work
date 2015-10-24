@@ -9,8 +9,18 @@
     alert("First: " + input.item(0).value +
           "\nLast: " + input.item(1).value +
           "\nSID:  " + input.item(2).value +
-          "\nBio:  " + input.item(3).value);
+          "\nBio:  " + input.item(3).value +
+          "\nHours: " + mResult);
   }
+
+  function keyHandler(e){
+    var keycode = e.keyCode;
+    var keychar = String.fromCharCode(keycode);
+    if(keychar < '0' || keychar > '9'){
+      e.preventDefault();
+    }
+  }
+
   function onDisplay(x){
     var display = document.getElementById("display");
     switch(x){
@@ -39,8 +49,16 @@
   }
 
   function displayHoursWorked(){
-    document.getElementsById("hours").innerHTML=mResult;
+    document.getElementById("hours").innerHTML=mResult;
   }
+
+  function init(){
+    var myform = document.getElementById("myform");
+    var sid = document.getElementById("sid");
+    sid.addEventListener("keypress", keyHandler, false);
+    myform.addEventListener("submit", displayAlert, false);
+  }
+  window.addEventListener("load", init, false);
   </script>
   <style>
     body{
@@ -62,11 +80,14 @@
       background-color: white;
       float: right;
     }
+    #display{
+      text-align: right;
+    }
   </style>
 </head>
 <body>
   <div id="form-container">
-    <form id="myform" onsubmit="displayAlert()" action="">
+    <form id="myform">
       <div class="form-group">
         <label class="info" for="formGroupInputSmall">First:</label><input type="text" name="first">
       </div>
@@ -74,17 +95,17 @@
         <label class="info" for="formGroupInputSmall">Last:</label><input type="text" name="last">
       </div>
       <div class="form-group">
-        <label class="info" for="formGroupInputSmall">SID:&nbsp;&nbsp;</label><input type="text" name="sid">
+        <label class="info" for="formGroupInputSmall">SID:&nbsp;&nbsp;</label><input type="text" id="sid" name="sid">
       </div>
       <div class="form-group">
         <label class="info" for="formGroupInputSmall">Bio:&nbsp;&nbsp;</label><input type="text" name="bio">
       </div>
-      <p>Hours worked this week: <span id="hours"></span><br>
+      <p>Hours worked this week: <span id="hours" color="black"></span></p>
       <button type="submit" class="btn btn-default" name="submit">Submit</button>
     </form>
   </div>
   <div id="calculator">
-    <form onsubmit="displayHoursWorked()" action="">
+    <form>
       <input type="text" id="display">
       <br>
       <input type="button" value="1" id="keys" onclick="onDisplay('1')">
@@ -106,7 +127,7 @@
       <input type="button" value="0" id="keys" onclick="onDisplay('0')">
       <input type="button" value="=" id="equal" onclick="calculate()">
       <input type="button" value="*" id="keys" onclick="onDisplay('*')"><br>
-      <button type="submit" class="btn btn-default" name="Submit">Save</button>
+      <button type="button" id="save" class="btn btn-default" onclick="displayHoursWorked()">Save</button>
     </form>
   </div>
 </body>

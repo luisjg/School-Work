@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<!-- L G -->
+<html>
+  <head>
+    <title>Lab 3 - CSUN Map Quiz</title>
+    <style type="text/css">
+    	h1   { text-align:center }
+      p    { text-align:center }
+  		html { height: 100% }
+	    body { height: 100%; margin: 0; padding: 0 }
+      #restart{
+        color: green;
+        text-decoration: none;
+      }
+      #fly-in{
+        background-color: white;
+        margin-left: 35%;
+        margin-right: 50%;
+        width: 500px;
+        position:absolute;
+        top: -500px;
+      }
+  		#map-canvas { height: 90% }
+	</style>
+    <!-- Google Maps JavaScript API -->
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js">
+    </script>
+    <!-- JQuery 2.x Google CDN -->
+    <script type="text/javascript"
+      src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js">
+    </script>
+    <!-- My written JavaScript + JQuery -->
+    <script type="text/javascript">
+
+	var map;
+  var currentBldg;
+  var buildingList = new Array();
+  var numCorrect=0;
+  var questionCount=0;
+  //get the window width
+  var windowHeight = $(window).height();
+  //start position of the div
+  var startPos = -200;
+
+  //hide the labels on Google Maps. Help from
+  //http://stackoverflow.com/a/7510891
+  var noLabels =
+  [
+    {
+        featureType: "poi",
+        elementType: "labels",
+        stylers: [
+              { visibility: "off" }
+        ]
+    },
+    // turn off the road labels
+    {
+        featureType: "roads",
+        elementType: "labels",
+        stylers: [
+              { visibility: "off" }
+        ]
+    }
+  ];
+
+  var csunMap=new google.maps.LatLng(34.2409649,-118.5287643);
+
+	function doubleClicked(e){
+    currentBldg.setOptions({fillColor: 'red', fillOpacity: 0.50});
+    document.getElementById("result").innerHTML='Wrong';
+	}
+
+  function init(){
+
+      //turned off all unnecessary controls
+    	var mapOptions = {
+		  zoom: 17,
+		  center: csunMap,
+		  mapTypeId: google.maps.MapTypeId.ROADMAP,
+			disableDoubleClickZoom: true,
+			disableDefaultUI: true,
+      draggable: false,
+      keyboardShortcuts: false,
+      panControl: false,
+      rotateControl: false,
+      scrollwheel: false,
+      streetViewControl: false,
+      zoomControl: false
+	    }
+
+	  	map = new google.maps.Map(document.getElementById("map-canvas"),
+	  							mapOptions);
+      map.setOptions({styles: noLabels});
+      setBuildings();
+      setTimeout(startQuiz, 5000);
+
+  		google.maps.event.addListener(map, 'dblclick', doubleClicked);
+    }
+
+    function setBuildings(){
+        /*
+         * used http://www.mapdevelopers.com/area_finder.php
+         * to generate the points for the buildings
+         */
+      var jacarandaCoords =[
+        new google.maps.LatLng(34.241039, -118.529454),
+        new google.maps.LatLng(34.241210, -118.529456),
+        new google.maps.LatLng(34.241213, -118.529439),
+        new google.maps.LatLng(34.241343, -118.529441),
+        new google.maps.LatLng(34.241439, -118.529454),
+        new google.maps.LatLng(34.241609, -118.529425),
+        new google.maps.LatLng(34.241766, -118.529323),
+        new google.maps.LatLng(34.241896, -118.529139),
+        new google.maps.LatLng(34.241955, -118.528906),
+        new google.maps.LatLng(34.241948, -118.528739),
+        new google.maps.LatLng(34.242075, -118.528736),
+        new google.maps.LatLng(34.242076, -118.528210),
+        new google.maps.LatLng(34.242084, -118.528211),
+        new google.maps.LatLng(34.242084, -118.527846),
+        new google.maps.LatLng(34.241033, -118.527845),
+        new google.maps.LatLng(34.241037, -118.528739),
+        new google.maps.LatLng(34.241104, -118.528741),
+        new google.maps.LatLng(34.241103, -118.529085),
+        new google.maps.LatLng(34.241036, -118.529087),
+        new google.maps.LatLng(34.241039, -118.529454)
+      ];
+
+      var unihallCoords=[
+        new google.maps.LatLng(34.23937296988742,-118.53190552443266),
+        new google.maps.LatLng(34.23935689397927,-118.53202287107706),
+        new google.maps.LatLng(34.23930201413184,-118.53201281279325),
+        new google.maps.LatLng(34.23930035110562,-118.53202756494284),
+        new google.maps.LatLng(34.239352459245445,-118.5320396348834),
+        new google.maps.LatLng(34.239329731230974,-118.53222604840994),
+        new google.maps.LatLng(34.23953816352411,-118.53227097541094),
+        new google.maps.LatLng(34.23965734665133,-118.53229647971),
+        new google.maps.LatLng(34.23965790099107,-118.53229244473977),
+        new google.maps.LatLng(34.2396911613683,-118.53229980915785),
+        new google.maps.LatLng(34.239701693818354,-118.53222001343966),
+        new google.maps.LatLng(34.23972220437525,-118.53222001343966),
+        new google.maps.LatLng(34.23972275871453,-118.53230115026236),
+        new google.maps.LatLng(34.23977874696555,-118.5323004797101),
+        new google.maps.LatLng(34.2397781926266,-118.53222001343966),
+        new google.maps.LatLng(34.239799257503634,-118.53222001343966),
+        new google.maps.LatLng(34.23981089861763,-118.53229712694883),
+        new google.maps.LatLng(34.23983473517932,-118.53229444473982),
+        new google.maps.LatLng(34.23983806121067,-118.53229779750109),
+        new google.maps.LatLng(34.24000269959726,-118.53226158767939),
+        new google.maps.LatLng(34.24017509837078,-118.53222269564867),
+        new google.maps.LatLng(34.24014959889599,-118.53205304592848),
+        new google.maps.LatLng(34.24019838049322,-118.53204231709242),
+        new google.maps.LatLng(34.2401956088123,-118.53203225880861),
+        new google.maps.LatLng(34.240146550045225,-118.53204235206266),
+        new google.maps.LatLng(34.240141838184734,-118.53200409561396),
+        new google.maps.LatLng(34.240127979769994,-118.53190686553717),
+        new google.maps.LatLng(34.239941999623504,-118.53194779836645),
+        new google.maps.LatLng(34.239847900719255,-118.53196691201987),
+        new google.maps.LatLng(34.23979974255008,-118.53197713939886),
+        new google.maps.LatLng(34.239797837010435,-118.53199366413338),
+        new google.maps.LatLng(34.239788014819105,-118.53199419766457),
+        new google.maps.LatLng(34.2397833419155,-118.53196973779325),
+        new google.maps.LatLng(34.239780886367335,-118.53195591350396),
+        new google.maps.LatLng(34.23975269303158,-118.53195652137418),
+        new google.maps.LatLng(34.239722412252505,-118.53195871961117),
+        new google.maps.LatLng(34.23971724996758,-118.53199000523784),
+        new google.maps.LatLng(34.239706353734235,-118.53199321952104),
+        new google.maps.LatLng(34.23970367731421,-118.53197437481884),
+        new google.maps.LatLng(34.23965443636769,-118.53196221232577)
+      ];
+
+      var bayramianCoords=[
+        new google.maps.LatLng(34.24035747482406,-118.5314230620861),
+        new google.maps.LatLng(34.240687857909485,-118.53143379092216),
+        new google.maps.LatLng(34.240687857909485,-118.53071764111519),
+        new google.maps.LatLng(34.240641293928974,-118.53071227669716),
+        new google.maps.LatLng(34.24063464192964,-118.530143648386),
+        new google.maps.LatLng(34.240545948555145,-118.53014096617699),
+        new google.maps.LatLng(34.24053929654828,-118.5301624238491),
+        new google.maps.LatLng(34.2402953892673,-118.53016510605812),
+        new google.maps.LatLng(34.24029095458291,-118.53047892451286),
+        new google.maps.LatLng(34.24024882506969,-118.53048160672188),
+        new google.maps.LatLng(34.24024882506969,-118.53055939078331),
+        new google.maps.LatLng(34.240233303664766,-118.53055939078331),
+        new google.maps.LatLng(34.24023108632097,-118.53089466691017),
+        new google.maps.LatLng(34.240204478190876,-118.53089466691017),
+        new google.maps.LatLng(34.24018895677778,-118.53081420063972),
+        new google.maps.LatLng(34.24000713429682,-118.53080615401268),
+        new google.maps.LatLng(34.240004916947065,-118.5310260951519),
+        new google.maps.LatLng(34.23991400555696,-118.5310260951519),
+        new google.maps.LatLng(34.23991289688087,-118.53109382092953),
+        new google.maps.LatLng(34.23991067952862,-118.53111930191517),
+        new google.maps.LatLng(34.23991400555696,-118.53113941848278),
+        new google.maps.LatLng(34.2399134512189,-118.531172969409),
+        new google.maps.LatLng(34.239963895966135,-118.53117696940899),
+        new google.maps.LatLng(34.23997054801844,-118.53122390806675),
+        new google.maps.LatLng(34.24023496667259,-118.53122701880591),
+        new google.maps.LatLng(34.240239955695806,-118.53135868906975),
+        new google.maps.LatLng(34.24036301817511,-118.53135337127867)
+      ];
+
+      var usuCoords=[
+        new google.maps.LatLng(34.23985081099623,-118.52702759206295),
+        new google.maps.LatLng(34.23985081099623,-118.5272341221571),
+        new google.maps.LatLng(34.240252151084654,-118.52722339332104),
+        new google.maps.LatLng(34.24025104241301,-118.52679155766964),
+        new google.maps.LatLng(34.24005258995387,-118.52679021656513),
+        new google.maps.LatLng(34.2400398401989,-118.52682362899515),
+        new google.maps.LatLng(34.24002376441815,-118.5268717236342),
+        new google.maps.LatLng(34.23998606947184,-118.52692320017644),
+        new google.maps.LatLng(34.239949483184304,-118.52695453683748),
+        new google.maps.LatLng(34.23995253204224,-118.52702714743242),
+        new google.maps.LatLng(34.23991455989505,-118.52702597396609)
+      ];
+
+      var seqCoords=[
+        new google.maps.LatLng(34.240155142260726,-118.5284360870719),
+        new google.maps.LatLng(34.24036190950494,-118.5284360870719),
+        new google.maps.LatLng(34.24036135516983,-118.52840323001146),
+        new google.maps.LatLng(34.24056424157129,-118.52840390056372),
+        new google.maps.LatLng(34.24056535023879,-118.52842267602682),
+        new google.maps.LatLng(34.240787637781025,-118.52841932326555),
+        new google.maps.LatLng(34.24078708344871,-118.527688421309),
+        new google.maps.LatLng(34.2406850862447,-118.52769043296576),
+        new google.maps.LatLng(34.240681205913845,-118.52765288203955),
+        new google.maps.LatLng(34.24063796792938,-118.5276522114873),
+        new google.maps.LatLng(34.24063713642944,-118.52766764584584),
+        new google.maps.LatLng(34.2406218922628,-118.52766830474138),
+        new google.maps.LatLng(34.240549828892235,-118.52766830474138),
+        new google.maps.LatLng(34.240550729684756,-118.52769150838844),
+        new google.maps.LatLng(34.24056559275982,-118.52769372248031),
+        new google.maps.LatLng(34.24056548882225,-118.5277455457823),
+        new google.maps.LatLng(34.24056562740571,-118.5279065708848),
+        new google.maps.LatLng(34.24056313290377,-118.52815351923738),
+        new google.maps.LatLng(34.240532298082194,-118.52815222732778),
+        new google.maps.LatLng(34.24052990751689,-118.52815662800009),
+        new google.maps.LatLng(34.24049323485099,-118.52815847557497),
+        new google.maps.LatLng(34.24045157315874,-118.52815764094078),
+        new google.maps.LatLng(34.24036606701803,-118.52815835159936),
+        new google.maps.LatLng(34.24036190950494,-118.52760795503855),
+        new google.maps.LatLng(34.240154310756026,-118.52760696086688),
+        new google.maps.LatLng(34.240155280844846,-118.52808122643341),
+        new google.maps.LatLng(34.240155583997606,-118.5282285929361),
+        new google.maps.LatLng(34.24010765986525,-118.52822969745023),
+        new google.maps.LatLng(34.24010937484461,-118.52832048931651),
+        new google.maps.LatLng(34.2401527170387,-118.52832504725416)
+      ];
+
+      var jacaranda=new google.maps.Polygon({
+        paths: jacarandaCoords,
+        fillColor: '333',
+        fillOpacity: 0.10,
+        building_name: "Jacaranda Hall"
+      });
+
+      var bayramian=new google.maps.Polygon({
+        paths: bayramianCoords,
+        fillColor: '333',
+        fillOpacity: 0.10,
+        building_name: "Bayramian Hall"
+      });
+
+      var studentunion=new google.maps.Polygon({
+        paths: usuCoords,
+        fillColor: '333',
+        fillOpacity: 0.10,
+        building_name: "University Student Union"
+      });
+
+      var univhall=new google.maps.Polygon({
+        paths: unihallCoords,
+        fillColor: '333',
+        fillOpacity: 0.10,
+        building_name: "University Hall"
+      });
+
+      var sequoia=new google.maps.Polygon({
+        paths: seqCoords,
+        fillColor: '333',
+        fillOpacity: 0.10,
+        building_name: "Sequoia Hall"
+      });
+      // add listeners
+      google.maps.event.addListener(bayramian, 'dblclick', buildingListener);
+      google.maps.event.addListener(jacaranda, 'dblclick', buildingListener);
+      google.maps.event.addListener(sequoia, 'dblclick', buildingListener);
+      google.maps.event.addListener(studentunion, 'dblclick', buildingListener);
+      google.maps.event.addListener(univhall, 'dblclick', buildingListener);
+      // add the buildings
+      bayramian.setMap(map);
+      jacaranda.setMap(map);
+      sequoia.setMap(map);
+      studentunion.setMap(map);
+      univhall.setMap(map);
+      // add the buildings to the list for randomization
+      buildingList.push(bayramian);
+      buildingList.push(jacaranda);
+      buildingList.push(sequoia);
+      buildingList.push(studentunion);
+      buildingList.push(univhall);
+    }
+
+    /** color change from
+      * https://developers.google.com/maps/documentation/javascript/examples/poly-containsLocation
+      */
+    function buildingListener(e){
+      var color=google.maps.geometry.poly.containsLocation(e.latLng, currentBldg) ? 'green' : 'red';
+      currentBldg.setOptions({fillColor: color, fillOpacity: 0.50});
+      if(color === 'red')
+        document.getElementById("result").innerHTML='Wrong!';
+      else{
+        document.getElementById("result").innerHTML='Right!';
+        numCorrect++;
+      }
+      if(questionCount < 5){
+        setTimeout(resetBuilding, 5000);
+        setTimeout(startQuiz, 5000);
+      } else{
+        document.getElementById("right").innerHTML=numCorrect;
+        divFlyIn();
+      }
+    }
+
+    function resetBuilding(){
+      currentBldg.setOptions({fillColor: '333', fillOpacity: 0.10});
+      document.getElementById("result").innerHTML='&nbsp;';
+    }
+
+    function startQuiz(){
+      var i = Math.floor(Math.random() * buildingList.length);
+      currentBldg = buildingList[i];
+      document.getElementById("prompt").innerHTML='Where is ' + currentBldg.building_name + '?';
+      questionCount++;
+    }
+
+    // idea from http://stackoverflow.com/a/15901559
+    function divFlyIn(){
+      var endPos = (windowHeight / 2);
+      $('#fly-in').animate({'top': endPos}, 1000);
+    }
+
+    // from http://stackoverflow.com/a/19207805
+    function reload(){
+      location.reload(true);
+    }
+
+	window.addEventListener("load", init, false);
+    </script>
+  </head>
+
+  <body>
+  <h1 id="prompt">CSUN Map Quiz</h1>
+  <p id="result">&nbsp;</p>
+  <div id="map-canvas"></div>
+
+  <div id="fly-in">
+    <h1>Results<h1>
+      <p><span id="right"></span> / 5 Correct</p>
+      <a href="#" id="restart" onclick="reload()">Restart Quiz</a>
+  </div>
+  </body>
+  </html>

@@ -1,4 +1,7 @@
 <?php
+Route::get('/', function(){
+	return 'Home Page';
+});
 
 Route::get('about', 'PagesController@about');
 

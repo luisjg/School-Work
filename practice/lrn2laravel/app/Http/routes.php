@@ -6,6 +6,11 @@ Route::get('contact', 'PagesController@contact');
 
 Route::resource('articles', 'ArticlesController');
 
+// less explicit 
+Route::controllers([
+	'auth' => 'Auth\AuthController',
+	'password' => 'Auth\PasswordController',
+	]);
 /*One way which is long and complex */
 //
 // Route::get('articles', 'ArticlesController@index');

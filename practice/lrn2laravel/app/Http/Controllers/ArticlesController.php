@@ -63,13 +63,31 @@ class ArticlesController extends Controller {
 	/* controller handles the validation */
 	public function store(ArticleRequest $request)
 	{
-		// save article		
+		// save an article		
 		// Article::create($request->all());
 
 		// add user to article
+		Auth::user()->articles()->create($request->all());
+
+		// another way
+		// $article = new Article($request->all());
+		// Auth::user()->articles()->save($article);
 		
-		$article = new Article($request->all());
-		Auth::user()->articles()->save($article);
+		// flash a message
+		session()->flash('flash_message', 'Your article has been created!');
+		session()->flash('flash_message_important', true);
+		// another way
+		// \Session::flash('flash_message', 'Your article has been created!');
+		// return redirect('articles');
+		
+		// yet another way to flash a message
+		// return redirect('articles')->with([
+		// 	'flash_message' => 'Your article has been created!',
+		// 	'flash_message_important' => true
+		// ]);
+
+		// yet another way
+		flash('Your article has been created!');
 		return redirect('articles');
 	}
 

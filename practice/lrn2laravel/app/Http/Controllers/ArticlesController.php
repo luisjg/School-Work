@@ -2,6 +2,7 @@
 
 use Auth;
 use App\Article;
+use App\Tag;
 use App\Http\Requests;
 // for object validation
 use App\Http\Requests\ArticleRequest;
@@ -42,7 +43,9 @@ class ArticlesController extends Controller {
 
 	public function create()
 	{
-		return view('articles.create');
+		// get all the tags
+		$tags = Tag::lists('name', 'id');
+		return view('articles.create', compact('tags'));
 	}
 
 	/* one way controller offloads to object and proceeds if
@@ -67,15 +70,20 @@ class ArticlesController extends Controller {
 		// Article::create($request->all());
 
 		// add user to article
-		Auth::user()->articles()->create($request->all());
+		// Auth::user()->articles()->create($request->all());
+		
+		// lets store article and tag
+		$article = Auth::user()->articles()->create($request->all());
+		$tagIds = $request->input('tag_list');
+		$article->tags()->attach($tagIds);
 
 		// another way
 		// $article = new Article($request->all());
 		// Auth::user()->articles()->save($article);
 		
 		// flash a message
-		session()->flash('flash_message', 'Your article has been created!');
-		session()->flash('flash_message_important', true);
+		// session()->flash('flash_message', 'Your article has been created!');
+		// session()->flash('flash_message_important', true);
 		// another way
 		// \Session::flash('flash_message', 'Your article has been created!');
 		// return redirect('articles');
@@ -87,13 +95,14 @@ class ArticlesController extends Controller {
 		// ]);
 
 		// yet another way
-		flash()->success('Your article has been created!');
-		return redirect('articles');
+		flash()->success('You are now logged in!');
+		return redirect('articles')->with('flash_message');
 	}
 
 	public function edit(Article $article)
 	{
-		return view('articles.edit',compact('article'));
+		$tags = Tag::lists('name', 'id');
+		return view('articles.edit',compact('article', 'tags'));
 	}
 
 	public function update(Article $article, ArticleRequest $request)

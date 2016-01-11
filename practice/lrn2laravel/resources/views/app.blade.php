@@ -10,7 +10,7 @@
 <body>
 	<div class="container">
 		@include('flash::message')
-		<!--@include('partials.flash') -->
+		<!-- @include('partials.flash') -->
 		@yield('content')
 	</div>
 	<script type="text/javascript" src="//code.jquery.com/jquery.js"></script>

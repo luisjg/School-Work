@@ -87,7 +87,7 @@ class ArticlesController extends Controller {
 		// ]);
 
 		// yet another way
-		flash('Your article has been created!');
+		flash()->success('Your article has been created!');
 		return redirect('articles');
 	}
 

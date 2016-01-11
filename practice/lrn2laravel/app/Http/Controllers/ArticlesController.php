@@ -108,7 +108,14 @@ class ArticlesController extends Controller {
 	public function update(Article $article, ArticleRequest $request)
 	{
 		$article->update($request->all());
+		// update the tags
+		$article->syncTags($article, $request->input('tag_list'))
 		return redirect('articles');
+	}
+
+	private function syncTags(Article $article, array $tags)
+	{
+		$artcle->tags()->sync($tags);
 	}
 
 }

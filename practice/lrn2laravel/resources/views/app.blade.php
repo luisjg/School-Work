@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <title>Document</title>
 	<link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/css/select2.min.css" />
 </head>
 
 <body>
@@ -13,11 +14,14 @@
 		<!-- @include('partials.flash') -->
 		@yield('content')
 	</div>
-	<script type="text/javascript" src="//code.jquery.com/jquery.js"></script>
-	<script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/bootstrap.min.js"></script>
-	<script type="text/javascript">
-	$('div.alert').not('.alert-important').delay(3000).slideUp(300);
+	<!-- Scripts --> 
+	<script type="application/javascript" src="https://code.jquery.com/jquery.js"></script>
+	<script type="application/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script type="application/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/js/select2.min.js"></script>
+	<script type="application/javascript">
+		$('div.alert').not('.alert-important').delay(3000).slideUp(300);
 	</script>
+
 	@yield('footer')
 </body>
 </html>

@@ -111,7 +111,7 @@ class ArticlesController extends Controller {
 	{
 		$article->update($request->all());
 		// update the tags
-		$this->syncTags($article, $request->input('tag_list'))
+		$this->syncTags($article, $request->input('tag_list'));
 		return redirect('articles');
 	}
 

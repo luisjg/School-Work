@@ -3,11 +3,13 @@ Route::get('/', 'PagesController@index');
 
 Route::get('about', 'PagesController@about');
 
+Route::get('blog', 'PagesController@blog');
+
 Route::get('contact', 'PagesController@contact');
 
 Route::resource('articles', 'ArticlesController');
 
-// less explicit 
+// less explicit
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',

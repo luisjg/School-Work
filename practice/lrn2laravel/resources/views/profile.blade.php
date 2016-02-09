@@ -34,7 +34,7 @@
 		@yield('content')
 		<hr>
 		<footer class="footer">
-			<p>&copy; Company 2016</p>
+			<p>&copy; klinster 2016</p>
 		</footer>
 	</div>
 		@yield('footer')

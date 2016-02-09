@@ -1,10 +1,6 @@
 <?php
 Route::get('/', 'PagesController@index');
 
-Route::get('blog', 'PagesController@blog');
-
-Route::get('contact', 'PagesController@contact');
-
 Route::get('projects', 'PagesController@projects');
 
 Route::resource('articles', 'ArticlesController');

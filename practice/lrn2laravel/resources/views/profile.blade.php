@@ -8,7 +8,7 @@
 	<script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
 	<style type="text/css">
 		body {
-			font-family: "Lato";
+			font-family: "Lato", sans-serif, monospace;
 		}
 	</style>
 </head>
@@ -21,10 +21,10 @@
 	    <a class="navbar-brand" href="{{ url('/') }}">klinster</a>
 	    <ul class="nav navbar-nav">
 	      <li class="nav-item">
-	        <a class="nav-link" href="{{ url('/blog') }}">Blog</a>
+	        <a class="nav-link" href="{{ url('/') }}">About</a>
 	      </li>
-	      <li class="nav-item">
-	        <a class="nav-link" href="{{ url('/about') }}">About</a>
+				<li class="nav-item">
+	        <a class="nav-link" href="{{ url('/projects') }}">Projects</a>
 	      </li>
 	    </ul>
 	  </div>
@@ -32,6 +32,10 @@
 	<hr>
 	<div class="container">
 		@yield('content')
+		<hr>
+		<footer class="footer">
+			<p>&copy; Company 2016</p>
+		</footer>
 	</div>
 		@yield('footer')
 </body>

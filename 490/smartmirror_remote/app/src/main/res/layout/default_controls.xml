@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/default_controls"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:columnCount="4"
+    app:rowCount="3">
+
+    <!-- row 1 -->
+    <TextView
+        android:id="@+id/calendar"
+        style="@style/RemoteButton"
+        android:drawableTop="@drawable/calendar"
+        android:text="@string/calendar"
+        app:layout_columnWeight="1"
+        app:layout_gravity="fill_horizontal" />
+
+    <TextView
+        android:id="@+id/camera"
+        style="@style/RemoteButton"
+        
+        android:drawableTop="@drawable/camera"
+        android:text="@string/camera"
+        app:layout_columnWeight="1"
+        app:layout_gravity="fill_horizontal" />
+
+    <TextView
+        android:id="@+id/facebook"
+        style="@style/RemoteButton"
+        
+        android:drawableTop="@drawable/facebook"
+        android:text="@string/facebook"
+        app:layout_columnWeight="1"
+        app:layout_gravity="fill_horizontal" />
+
+    <TextView
+        android:id="@+id/forecast"
+        style="@style/RemoteButton"
+        
+        android:drawableTop="@drawable/forecast"
+        android:text="@string/forecast"
+        app:layout_columnWeight="1"
+        app:layout_gravity="fill_horizontal" />
+
+    <!-- row 2 -->
+    <TextView
+        android:id="@+id/gallery"
+        style="@style/RemoteButton"
+        android:drawableTop="@drawable/gallery"
+        android:text="@string/gallery"
+        app:layout_columnWeight="1"
+        app:layout_gravity="fill_horizontal" />
+
+
+    <TextView
+        android:id="@+id/gmail"
+        style="@style/RemoteButton"
+        android:drawableTop="@drawable/email"
+        android:text="@string/gmail"
+        app:layout_columnWeight="1"
+        app:layout_gravity="fill_horizontal" />
+
+    <TextView
+        android:id="@+id/music"
+        style="@style/RemoteButton"
+        android:drawableTop="@drawable/music"
+        android:text="@string/music"
+        app:layout_columnWeight="1"
+        app:layout_gravity="fill_horizontal" />
+
+    <TextView
+        android:id="@+id/news"
+        style="@style/RemoteButton"
+        android:drawableTop="@drawable/news"
+        android:text="@string/news"
+        app:layout_columnWeight="1"
+        app:layout_gravity="fill_horizontal" />
+
+    <TextView
+        android:id="@+id/night_light"
+        style="@style/RemoteButton"
+        android:drawableTop="@drawable/light"
+        android:text="@string/night_light"
+        app:layout_columnWeight="1"
+        app:layout_gravity="fill_horizontal" />
+    <!-- row 3 -->
+    <TextView
+        android:id="@+id/photos"
+        style="@style/RemoteButton"
+        android:drawableTop="@drawable/photo"
+        android:text="@string/photos"
+        app:layout_columnWeight="1"
+        app:layout_gravity="fill_horizontal" />
+
+
+    <TextView
+        android:id="@+id/quotes"
+        style="@style/RemoteButton"
+        android:drawableTop="@drawable/quotes"
+        android:text="@string/quotes"
+        app:layout_columnWeight="1"
+        app:layout_gravity="fill_horizontal" />
+
+    <TextView
+        android:id="@+id/settings"
+        style="@style/RemoteButton"
+        
+        android:drawableTop="@drawable/settings"
+        android:text="@string/settings"
+        app:layout_columnWeight="1"
+        app:layout_gravity="fill_horizontal" />
+
+    <TextView
+        android:id="@+id/twitter"
+        style="@style/RemoteButton"
+        
+        android:drawableTop="@drawable/twitter"
+        android:text="@string/twitter"
+        app:layout_columnWeight="1"
+        app:layout_gravity="fill_horizontal" />
+
+</android.support.v7.widget.GridLayout>
+

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/nav_calendar" android:icon="@android:drawable/ic_menu_today"
+            android:title="@string/title_calendar"/>
+        <item android:id="@+id/nav_camera" android:icon="@android:drawable/ic_menu_camera"
+            android:title="@string/title_camera"/>
+        <item android:id="@+id/nav_facebook" android:icon="@android:drawable/ic_menu_slideshow"
+            android:title="@string/title_facebook"/>
+        <item android:id="@+id/nav_gallery" android:icon="@android:drawable/ic_menu_gallery"
+            android:title="@string/title_gallery"/>
+        <item android:id="@+id/nav_gmail" android:icon="@android:drawable/ic_menu_gallery"
+            android:title="@string/title_gmail"/>
+        <item android:id="@+id/nav_help" android:icon="@android:drawable/ic_menu_gallery"
+            android:title="@string/title_help"/>
+        <item android:id="@+id/nav_light" android:icon="@android:drawable/ic_menu_gallery"
+            android:title="@string/title_light"/>
+        <item android:id="@+id/nav_music" android:icon="@android:drawable/ic_menu_gallery"
+            android:title="@string/title_music"/>
+        <item android:id="@+id/nav_news" android:icon="@android:drawable/ic_menu_gallery"
+            android:title="@string/title_news"/>
+        <item android:id="@+id/title_photos" android:icon="@android:drawable/ic_menu_gallery"
+            android:title="@string/title_photos"/>
+        <item android:id="@+id/nav_quotes" android:icon="@android:drawable/ic_menu_gallery"
+            android:title="@string/title_quotes"/>
+        <item android:id="@+id/nav_settings" android:icon="@android:drawable/ic_menu_gallery"
+            android:title="@string/title_settings"/>
+        <item android:id="@+id/nav_twitter" android:icon="@android:drawable/ic_menu_gallery"
+            android:title="@string/title_twitter"/>
+        <item android:id="@+id/nav_weather" android:icon="@android:drawable/ic_menu_gallery"
+            android:title="@string/title_weather"/>
+    </group>
+</menu>

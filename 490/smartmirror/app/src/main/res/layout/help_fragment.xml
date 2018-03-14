@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/help_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginEnd="15dp"
+    android:layout_marginStart="15dp"
+    android:layout_marginTop="15dp"
+    android:orientation="vertical">
+
+    <!-- current fragment -->
+    <TextView
+        android:id="@+id/current_help_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <View
+        android:id="@+id/help_divider"
+        style="@style/Divider" />
+
+    <TextView
+        android:id="@+id/current_help_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <!-- available sections -->
+    <TextView
+        android:id="@+id/mode_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <View style="@style/Divider" />
+
+    <TextView
+        android:id="@+id/mode_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <!-- general help -->
+    <TextView
+        android:id="@+id/general_help_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="9dp"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <View style="@style/Divider" />
+
+    <TextView
+        android:id="@+id/general_help_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

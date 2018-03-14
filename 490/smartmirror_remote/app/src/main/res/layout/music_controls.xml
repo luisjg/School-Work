@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/music_controls"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:columnCount="4"
+    app:rowCount="3">
+    <TextView
+        android:id="@+id/alternative"
+        style="@style/RemoteButton"
+        android:drawableTop="@drawable/music"
+        android:text="@string/alternative"
+        app:layout_columnWeight="1"
+        app:layout_gravity="fill_horizontal" />
+    <TextView
+        android:id="@+id/ambient"
+        style="@style/RemoteButton"
+        android:drawableTop="@drawable/music"
+        android:text="@string/ambient"
+        app:layout_columnWeight="1"
+        app:layout_gravity="fill_horizontal" />
+    <TextView
+        android:id="@+id/classical"
+        style="@style/RemoteButton"
+        android:drawableTop="@drawable/music"
+        android:text="@string/classical"
+        app:layout_columnWeight="1"
+        app:layout_gravity="fill_horizontal" />
+    <TextView
+        android:id="@+id/dance"
+        style="@style/RemoteButton"
+        android:drawableTop="@drawable/music"
+        android:text="@string/dance"
+        app:layout_columnWeight="1"
+        app:layout_gravity="fill_horizontal" />
+    <TextView
+        android:id="@+id/jazz"
+        style="@style/RemoteButton"
+        android:drawableTop="@drawable/music"
+        android:text="@string/jazz"
+        app:layout_columnWeight="1"
+        app:layout_gravity="fill_horizontal" />
+    <TextView
+        android:id="@+id/rap"
+        style="@style/RemoteButton"
+        android:drawableTop="@drawable/music"
+        android:text="@string/rap"
+        app:layout_columnWeight="1"
+        app:layout_gravity="fill_horizontal" />
+    <TextView
+        android:id="@+id/rock"
+        style="@style/RemoteButton"
+        android:drawableTop="@drawable/music"
+        android:text="@string/rock"
+        app:layout_columnWeight="1"
+        app:layout_gravity="fill_horizontal" />
+
+</android.support.v7.widget.GridLayout>

@@ -1,0 +1,3 @@
+include ':app', ':pocketsphinx-android-5prealpha-nolib', ':java-json'
+include 'json-simple-1.1.jar'
+

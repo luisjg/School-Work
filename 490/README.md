@@ -5,3 +5,7 @@ Languages used
 - HTML/CSS
 
 - Bash
+
+- Laravel
+
+- Android

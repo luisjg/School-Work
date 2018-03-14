@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Chatm</title>
+    <!--Import Google Icon Font-->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons">
+  <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+    <!-- App styles  -->
+    <link rel="stylesheet" type="text/css" href="../css/mystyle.css">
+    <!--Importing jquery-->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+    <!--This section right here is the client side socket-->
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+  </head>
+  <body>
+
+    <nav>
+      <div class="nav-wrapper">
+        <a href="/" class="brand-logo">Chatm</a>
+        <a href="#" data-activates="mobile-nav" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="/">Log Out</a></li>
+        </ul>
+        <ul class="side-nav" id="mobile-nav">
+          <li><a href="/">Log Out</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div id="user-name">
+      <h1>Enter a user name</h1>
+      <p id="errors"></p>
+      <div class="row">
+          <form id="usersbox" class="col s12">
+            <div class="row">
+              <div class="input-field col s5">
+                <input id="set-user-name" type="text" autofocus="true">
+                <label for="set-user-name">User Name</label>
+              </div>
+              <div class="input-field col s3">
+              <button class="btn waves-effect waves-light" type="submit" name="action">
+                <i class="material-icons">send</i>
+              </button>
+              </div>
+            </div>
+          </form>
+        </div>
+    </div>
+
+    <div id="container">
+      <div id="chat">
+        <div id="messages"></div>
+      <div class="row">
+          <form id="chatbox" class="col s12">
+            <div class="row">
+              <div class="input-field col s5">
+                <input id="m" type="text" autofocus="true">
+                <label for="m">Message</label>
+              </div>
+              <div class="input-field col s1 offset-s4">
+              <button class="btn waves-effect waves-light" type="submit" name="action">
+                <i class="material-icons">send</i>
+              </button>
+              </div>
+            </div>
+          </form>
+        </div>
+        </div>
+
+      <div id="webm">
+        <div id="chat-users">
+          <ul id="users"></ul>
+        </div>
+      </div>
+    </div>
+
+  </body>
+  <!--the socket script has to be AFTER the form is declared-->
+  <script type="text/javascript" src="../js/socket.js"></script>
+</html>

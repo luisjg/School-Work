@@ -1,0 +1,30 @@
+********DATABASE SETUP for databaseSetup.php********
+
+1. DOWNLOAD: Wamp server for phpmyadmin
+
+http://www.wampserver.com/en/
+
+Click the link above. Go to downloads, and install. 
+
+Run wamp.
+
+To access the server through a web browser, type in the following url:
+localhost/phpmyadmin
+
+Default Username should be "root" and password should be empty in the form of ""
+
+Once wamp is installed and you are able to access localhost/phpmyadmin,
+save the databaseSetup.php file like this: 
+
+My path looks like this: C:\wamp\www\Zilean
+I created a folder Zilean and put it in there.
+
+To run the file, you have to type in localhost/Zilean
+It should show the databaseSetup.php file in the Zilean directory if saved correctly.
+
+
+NOTE: I tried running the databaseSetup.php file without saving it there
+      and I have not been able to figure out why it won't work yet.
+
+
+

@@ -1,0 +1,7 @@
+AuthName "zilean.coroflex.com statistics"
+AuthType Basic
+AuthUserFile /home/zilean/.stats-htpasswd
+require valid-user
+<Files .stats-htpasswd>
+deny from all
+</Files>

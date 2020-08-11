@@ -1,0 +1,53 @@
+Luis Guzman
+Assignment 3
+Chapter 7
+
+1)
+The main advantage of the array based implementation of the stack is that when the size of the stack doesn't change, an array stack implementation is better than the linked list one. A disadvantage is that the array can't grow unless it is a dynamically allocated array but we run into memory restrictions. A linked list based implementation of the stack has the ability to grow, forever if memory and cpu cycles permit.
+
+5)
+//removes the top n number of items in a linked list
+//checks to see if the list is null and if not contiunes
+//@pre n is a positive number
+//@post removes the top n number of items
+//Implementation is similar to pop()
+template<class ItemType>
+void LinkedStack<ItemType>::remove(int n){
+	if(n > 0){
+		//decrement the number passed in
+		n = n-1;
+		//check to see if n is valid or if the list is null
+		while(n >= 0 || !isEmpty()){
+			//create a temporary node that will delete each item
+			Node<ItemType>* temp = topPtr;
+			//set top pointer to the next node
+			topPtr->getNext();
+			//set the next node of temp to null
+			temp->setNext(nullptr);
+			//delte the contents of temp
+			delete temp;
+			//just to be sure set temp to null 
+			temp = nullptr;
+			//decrement n and loop back
+			n--;
+		}
+	}
+}
+
+
+7)
+//Implemented a destructor that manipulates the 
+//linked list direcly as opposed to calling a method
+//@pre create a LinkedStack object of <ItemType> nodes
+//@post deallocates the meory and destroys the linkedlist.
+//implementation is similar to pop()
+template<class ItemType>
+LinkedStack<ItemType>::~LinkedStack(){
+	while(!isEmpty()){
+		Node<ItemType>* temp = topPtr;
+		topPtr->getNext();
+		temp->setNext(nullptr);
+		delete temp;
+		temp=nullptr; 
+	}
+}

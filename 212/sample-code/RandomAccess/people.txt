@@ -1,0 +1,8 @@
+Mustang Sally       Houston         22 
+George Symthe       Westchester     52 
+Harry Harrison      New York        37 
+Cherise Eddington   London          45 
+Antonio Valdez      San Francisco   61 
+Mary Gomez          Phoenix         19 
+Jon-luc Doe         Los Angeles     61 
+Bruce Bacon         Paris           28 

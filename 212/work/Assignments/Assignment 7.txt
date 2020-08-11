@@ -1,0 +1,25 @@
+Luis Guzman
+Assignment 7
+Pages 717 to 719
+#1 b, e, EC: c or d, #2, #3, #4, #15a
+
+1b)
+
+1c)
+
+1e)
+
+2) The advantages of implementing the ADT table with a 2-3 tree instead of a binary search tree is that it is easier to insert, delete and balance. Because of the issue with insertions and deletions. A binary search tree will be completely balanced so far as there is no more insertions or deletions being made. Once a deletion or insertion is made the balanced binary search tree becomes unbalanced.
+
+3)
+
+4) Initial tree    after insertion of k, b, c, y and w
+
+		   r                          opr
+		                        ce        uw           
+	  eh	  u               b d fhk  st  v  y
+	d f op	st v                       
+
+	abcdefghijklmnopqrstuvwxyz
+
+15)

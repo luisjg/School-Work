@@ -1,0 +1,30 @@
+Luis Guzman
+
+Assignment 2
+
+Chapter 5
+
+5)
+<string> = X| <string> <F>|<string> Y
+<F> = X|Z
+
+7) 
+<word> = R|<D>|<D><word><S>
+<D>    = Q|P
+<S>    = 1
+
+if the string is of length 1
+and the letter is either R, Q, or P
+return true
+if the string is greater than one
+check to see if the string ends with a 1
+if it does, call itself and send a string that is
+one character shorter than previous to check for R or Q or P
+return false if these tests fail
+
+10) is +*a-b/c++de-fg prefix?
+No it is not since prefix states
+
+<prefix>     = <identifier>|<operator><prefix><prefix>
+<operator>   = +|-|*|/
+<identifier> = a|b|...|z

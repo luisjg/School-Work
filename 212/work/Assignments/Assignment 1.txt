@@ -1,0 +1,61 @@
+8)
+/*
+ *A recursive method that returns the 
+ *sum of the squares up to a number
+ *aNum
+ *@pre aNum has to be positive
+ *@post returns the sum of the squares
+ *up to a number aNum
+ */
+
+int sumSquares(int aNum){
+	if(aNum == 1)
+		return 1;
+	else
+		return (aNum*aNum)+sumSquares(aNum-1);
+}
+
+13)
+/*
+This recursive method receives a positive integer
+and coverts it to the base 8 equivalent. The base
+case is to check if the integer is divisible by 8.
+@pre n has to be positive
+@post converts and prints the base 8 equivalent
+of the number n
+*/
+void displayOctal(int n){
+	if(n>0){
+		if(n/8>0)
+			displayOctal(n/8);
+		cout << n % 8 << endl;
+	}
+}
+
+analysis with displayOctal(100).
+step 1 is 100 > 0? yes
+step 2 is 100/8 = 12 > 0? yes
+step 3 call displayOctal(12)
+step 4 is 12 > 0? yes
+step 5 is 12/8 = 1 > 0? yes
+step 6 call displayOctal(1)
+step 7 is 1 > 0? yes
+step 8 is 1/8 = 0 > 0? no
+step 9 print the remainder of 1/8 = 1
+step 10 print the remainder of 12/8 = 4
+step 11 print the remainder 0f 100/8 = 4
+
+
+15)
+If x was passed by reference to recuse
+then the value that x points to gets manipulated
+
+17a)
+The array would be needed to go from index 0-100
+and be split between 0-49 and 50-100.
+
+17b)
+The index that it should check first would be a
+number between 0-49. If the value 99 is not anywhere
+in this array then the second array must have the
+value 99.

@@ -1,0 +1,68 @@
+Lab 2
+Write a program that compares the efficiency of inserting text into an ordered linked list verses doing a Radix Sort. Use random numbers to build strings 5 characters in length and place them in an array of strings that is 1000 long. You can use indexing to access each word and each character in that word. For instance:
+
+string word[MAX_SIZE];
+
+You can reference the 2nd character of the first word like: word[0][1]
+
+Create the array of words first then use it to create the linked list before the array is sorted. Use the Node.h and Node.cpp for the linked list. Also use constants, like MAX_SIZE with 1000, and MAX_WORD_SIZE with 5. It is recommended to have a Radix.h and Radix.cpp that has functions like:
+
+void createText(string w[], int seed);
+
+void createLinkedList(string w[], Node<string>*& root, int& count);
+
+void radixSort(string w[], int& count);
+
+With the createLinkedList and radixSort function, count every compare (with linked list) and every move (radix sort). Then after the linked list and sort has been down, print the first 10 and last 10 words of the linked list and array. Also the counts for each linked list and array.
+
+
+Lab 3
+30 pts
+
+There is a toll drawbridge that crosses Wattawide river. It has two tollbooths that handles normal traffic reasonably well but has room for three extra booths. The problem is when there is a 5 to 15 minute delay when the drawbridge is up and the traffic backs up. The two tollbooths become a bit of a bottleneck.
+
+Write a program that will compare adding one, two, or three tollbooths to see if the wait time goes down. Each vehicle can either pay with a fast electronic pass card (just drive by slowly) that takes 1 time unit or with cash (toss coins into a basket) that takes 3 time units. You may assume half of the vehicles have the pass card and half have coins (do the equivalent of a coin toss using random). Also assume that vehicles will evenly line up behind every toll booth.
+
+Have a toll_sim routine that would take the number of booths, create a queue for each booth, and fill each booth with vehicles. Have a random number from 50 to about 100 as the number of vehicles waiting Use a toll_kind function to return a Pass or Cash for each vehicle to determine the time it takes to go through the booth. Have toll_sim dequeue all the vehicles and add up the wait times per booth (be careful not to include the final wait times since no vehicle would be behind the last one). Have a current wait time as you go through the queue and have a total wait time that adds all the wait times of the cars for the current booth. For each booth, print the maximum wait time (the last current wait time), the number of cars waiting for that booth, and the average wait  (total wait time divided by the number of cars for the booth).
+
+Run the toll_sim with 2 booths, 3 booths, 4 booths, and 5 booths.
+
+
+Lab 4
+Do a program that will read names from a file and put them in a binary search tree. Extend the binary search tree to print the tree like it would be diagramed (just print "*" where there is a node with data – call it a map). Print the names inorder (use passing of a function to print the node). Have it also search for a name that is in the binary search tree and a name that is not (your choice) – it should say it found it and the name or didn't find it (and the name, of course).
+
+For example the data of: Fred Mertz, Betty Boop, Abner Little, Lucy Bee, Georgie Poo, Zac Smith
+
+Should print out:
+
+                                                        *
+
+                                                  *           *
+
+                                               *           *     *
+
+Hints: do a function that gets the height of the binary search tree, create a two dimensional array based on the height and figure out the width of the lowest level, then put in the "*" in the correct place and print the map.
+
+Try the following data:
+
+Nancy Drew
+
+Greg Greed
+
+Helen Hail
+
+John Symthe
+
+Orville Corn
+
+Mustang Sally
+
+Xena II
+
+
+Lab 5
+Do a heap sort of an array of values such as:
+
+4 12 8 33 21 56 3 76 81 19 13 5
+
+Use the code from chapter 17 to take an array, build a heap, then sort and put back into the array (or change the code to heap and sort in place

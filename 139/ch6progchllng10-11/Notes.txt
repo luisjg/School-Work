@@ -1,0 +1,3 @@
+this is a pointer to the current object.
+the use of this also helps by choosing the variable. typing this. opens up window in eclipse
+so you chan choose which one.-

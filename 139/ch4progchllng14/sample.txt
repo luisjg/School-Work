@@ -1,0 +1,7 @@
+Hello,
+This is the fall semester of 2010. This class is CSIS130.
+This is Chapter 4 Programming Challenge #14.
+More stuff should go here.
+This is just a test of how the program should print.
+It should print each line followed by the corresponding line number and semicolon.
+Let's see if I did this right.

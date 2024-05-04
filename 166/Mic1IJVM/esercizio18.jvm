@@ -1,0 +1,45 @@
+    /**********************************************************/
+    /* Esercizio n.18 della PAGINA WEB                        */
+    /**********************************************************/
+// Considerate un metodo Java che prenda in input due parametri
+// formali k e j (numeri interi) e che restituisca (2*k)+4 se j
+// e' uguale a zero e j-1 altrimenti.
+// Scrivere il codice IJVM che traduca tale metodo ed il segmento
+// di codice che traduca la chiamata di tale metodo con parametri
+// attuali 5 e 7.
+
+
+
+
+.method pippo(k,j)
+
+// Inserimento delle istruzioni del metodo.
+
+ILOAD j
+        IFEQ E1
+        ILOAD j
+        BIPUSH 1
+        ISUB
+        GOTO RET
+E1:     ILOAD k
+        DUP
+        IADD
+        BIPUSH 4
+        IADD
+RET:   OUT 
+       IRETURN
+.end-method
+
+
+
+.main
+
+// Inserimento delle istruzioni del metodo main.
+
+    
+        BIPUSH 5
+        BIPUSH 7
+        INVOKEVIRTUAL pippo
+
+halt
+.end-main

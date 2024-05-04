@@ -1,0 +1,213 @@
+Main1	PC = PC + 1; fetch; goto (MBR)	// MBR holds opcode; get next byte; dispatch
+
+nop1	goto Main1			// Do nothing
+
+iadd1	MAR = SP = SP - 1; rd		// Read in next-to-top word on stack
+iadd2	H = TOS				// H = top of stack
+iadd3   MDR = TOS = H + MDR; wr; goto Main1     // Add top two words; write to top of stack
+
+isub1	MAR = SP = SP - 1; rd		// Read in next-to-top word on stack
+isub2	H = TOS				// H = top of stack
+isub3	MDR = TOS = MDR - H; wr; goto Main1	// Do subtraction; write to top of stack
+
+iand1	MAR = SP = SP - 1; rd		// Read in next-to-top word on stack
+iand2	H = TOS				// H = top of stack
+iand3   MDR = TOS = H AND MDR; wr; goto Main1   // Do AND; write to new top of stack
+
+ior1	MAR = SP = SP - 1; rd		// Read in next-to-top word on stack
+ior2	H = TOS				// H = top of stack
+ior3    MDR = TOS = H OR MDR; wr; goto Main1    // Do OR; write to new top of stack
+
+dup1	MAR = SP = SP + 1		// Increment SP and copy to MAR
+dup2	MDR = TOS; wr; goto Main1	// Write new stack word
+
+pop1	MAR = SP = SP - 1; rd		// Read in next-to-top word on stack
+pop2    PC = PC                         // Wait for new TOS to be read from memory
+pop3	TOS = MDR; goto Main1		// Copy new word to TOS
+
+swap1	MAR = SP - 1; rd		// Set MAR to SP - 1; read 2nd word from stack
+swap2	MAR = SP			// Set MAR to top word
+swap3	H = MDR; wr			// Save TOS in H; write 2nd word to top of stack
+swap4	MDR = TOS			// Copy old TOS to MDR
+swap5	MAR = SP - 1; wr		// Set MAR to SP - 1; write as 2nd word on stack
+swap6	TOS = H; goto Main1		// Update TOS
+
+bipush1	SP = MAR = SP + 1		// MBR = the byte to push onto stack
+bipush2	PC = PC + 1; fetch		// Increment PC, fetch next opcode
+bipush3	MDR = TOS = MBR; wr; goto Main1	// Sign-extend constant and push on stack
+
+
+iload1	H = LV				// MBR contains index; copy LV to H
+iload2  MAR = H + MBRU; rd              // MAR = address of local variable to push
+iload3	MAR = SP = SP + 1		// SP points to new top of stack; prepare write
+iload4	PC = PC + 1; fetch; wr		// Inc PC; get next opcode; write top of stack
+iload5	TOS = MDR; goto Main1		// Update TOS
+
+istore1	H = LV				// MBR contains index; Copy LV to H
+istore2 MAR = H + MBRU                  // MAR = address of local variable to store into
+istore3	MDR = TOS; wr			// Copy TOS to MDR; write word
+istore4	SP = MAR = SP - 1; rd		// Read in next-to-top word on stack
+istore5	PC = PC + 1; fetch		// Increment PC; fetch next opcode
+istore6	TOS = MDR; goto Main1		// Update TOS
+wide1   PC = PC + 1; fetch; goto (MBR OR 0x100) // Multiway branch with high bit set
+
+wide_iload1	PC = PC + 1; fetch	// MBR contains 1st index byte; fetch 2nd
+wide_iload2	H = MBRU << 8		// H = 1st index byte shifted left 8 bits
+wide_iload3     H = H OR MBRU           // H = 16-bit index of local variable
+wide_iload4     MAR = H + LV; rd; goto iload3   // MAR = address of local variable to push
+
+wide_istore1	PC = PC + 1; fetch	// MBR contains 1st index byte; fetch 2nd
+wide_istore2	H = MBRU << 8		// H = 1st index byte shifted left 8 bits
+wide_istore3    H = H OR MBRU           // H = 16-bit index of local variable
+wide_istore4    MAR = H + LV; goto istore3      // MAR = address of local variable to store into
+
+ldc_w1	PC = PC + 1; fetch		// MBR contains 1st index byte; fetch 2nd
+ldc_w2	H = MBRU << 8			// H = 1st index byte << 8
+ldc_w3  H = H OR MBRU                   // H = 16-bit index into constant pool
+ldc_w4	MAR = H + CPP; rd; goto iload3	// MAR = address of constant in pool
+
+iinc1	H = LV				// MBR contains index; Copy LV to H
+iinc2   MAR = H + MBRU; rd              // Copy LV + index to MAR; Read variable
+iinc3	PC = PC + 1; fetch		// Fetch constant
+iinc4	H = MDR				// Copy variable to H
+iinc5	PC = PC + 1; fetch		// Fetch next opcode
+iinc6   MDR = H + MBR; wr; goto Main1   // Put sum in MDR; update variable
+
+goto1	OPC = PC - 1			// Save address of opcode.
+goto2	PC = PC + 1; fetch		// MBR = 1st byte of offset; fetch 2nd byte
+goto3	H = MBR << 8			// Shift and save signed first byte in H
+goto4   H = H OR MBRU                   // H = 16-bit branch offset
+goto5   PC = H + OPC; fetch             // Add offset to OPC
+goto6	goto Main1			// Wait for fetch of next opcode
+
+iflt1	MAR = SP = SP - 1; rd		// Read in next-to-top word on stack
+iflt2	OPC = TOS			// Save TOS in OPC temporarily
+iflt3	TOS = MDR			// Put new top of stack in TOS
+iflt4	N = OPC; if (N) goto T; else goto F	// Branch on N bit
+
+ifeq1	MAR = SP = SP - 1; rd		// Read in next-to-top word of stack
+ifeq2	OPC = TOS			// Save TOS in OPC temporarily
+ifeq3	TOS = MDR			// Put new top of stack in TOS
+ifeq4	Z = OPC; if (Z) goto T; else goto F	// Branch on Z bit
+
+if_icmpeq1	MAR = SP = SP - 1; rd	// Read in next-to-top word of stack
+if_icmpeq2	MAR = SP = SP - 1	// Set MAR to read in new top-of-stack
+if_icmpeq3	H = MDR; rd		// Copy second stack word to H
+if_icmpeq4	OPC = TOS		// Save TOS in OPC temporarily
+if_icmpeq5	TOS = MDR		// Put new top of stack in TOS
+if_icmpeq6	Z = OPC - H; if (Z) goto T; else goto F	// If top 2 words are equal, goto T, else goto F
+
+T	OPC = PC - 1; fetch; goto goto2	// Same as goto1; needed for target address
+
+F	PC = PC + 1			// Skip first offset byte
+F2	PC = PC + 1; fetch		// PC now points to next opcode
+F3	goto Main1			// Wait for fetch of opcode
+
+invokevirtual1	PC = PC + 1; fetch	// MBR = index byte 1; inc. PC, get 2nd byte
+invokevirtual2	H = MBRU << 8		// Shift and save first byte in H
+invokevirtual3  H = H OR MBRU           // H = offset of method pointer from CPP
+invokevirtual4  MAR = H + CPP; rd       // Get pointer to method from CPP area
+invokevirtual5	OPC = PC + 1		// Save Return PC in OPC temporarily
+invokevirtual6	PC = MDR; fetch		// PC points to new method; get param count
+invokevirtual7	PC = PC + 1; fetch	// Fetch 2nd byte of parameter count
+invokevirtual8	H = MBRU << 8		// Shift and save first byte in H
+invokevirtual9  H = H OR MBRU           // H = number of parameters
+invokevirtual10	PC = PC + 1; fetch	// Fetch first byte of # locals
+invokevirtual11	TOS = SP - H		// TOS = address of OBJREF - 1
+invokevirtual12 TOS = MAR = TOS + 1     // TOS = address of OBJREF (new LV)
+invokevirtual13	PC = PC + 1; fetch	// Fetch second byte of # locals
+invokevirtual14	H = MBRU << 8		// Shift and save first byte in H
+invokevirtual15 H = H OR MBRU           // H = # locals
+invokevirtual16 MDR = H + SP + 1; wr    // Overwrite OBJREF with link pointer
+invokevirtual17	MAR = SP = MDR;		// Set SP, MAR to location to hold old PC
+invokevirtual18	MDR = OPC; wr		// Save old PC above the local variables
+invokevirtual19	MAR = SP = SP + 1	// SP points to location to hold old LV
+invokevirtual20	MDR = LV; wr		// Save old LV above saved PC
+invokevirtual21	PC = PC + 1; fetch	// Fetch first opcode of new method.
+invokevirtual22	LV = TOS; goto Main1	// Set LV to point to LV Frame
+
+ireturn1	MAR = SP = LV; rd	// Reset SP, MAR to get link pointer
+ireturn2        PC = PC                 // Wait for read
+ireturn3	LV = MAR = MDR; rd	// Set LV to link ptr; get old PC
+ireturn4	MAR = LV + 1		// Set MAR to read old LV
+ireturn5	PC = MDR; rd; fetch	// Restore PC; fetch next opcode
+ireturn6	MAR = SP		// Set MAR to write TOS
+ireturn7	LV = MDR		// Restore LV
+ireturn8	MDR = TOS; wr; goto Main1	// Save return value on original top of stack
+
+halt1 goto halt1
+
+
+
+out1  OPC=H=-1                        // compute IO address
+out2  OPC=H+OPC                       // -2
+out3  OPC=H+OPC                       // -3
+out4  OPC=H+OPC                       // -4
+out5  OPC=H+OPC                       // -5
+out6  MAR=H+OPC                       // -6
+out7  MDR=TOS; wr                     // write to output
+out8  nop
+out9  MAR=SP=SP-1; rd                 // decrement stack pointer
+out10 nop
+out11 TOS=MDR; goto Main1
+
+in1  OPC=H=-1                        // compute IO address
+in2  OPC=H+OPC                       // -2
+in3  OPC=H+OPC                       // -3
+in4  OPC=H+OPC                       // -4
+in5  OPC=H+OPC                       // -5
+in6  MAR=H+OPC;rd                    // compute IN address ; read from input
+in7  MAR=SP=SP+1                     // increment SP; wait for read
+in8  TOS=MDR;wr ; goto Main1         // Write 
+
+err1  OPC=H=-1                        // compute IO address
+err2  OPC=H+OPC                       // -2
+err3  OPC=H+OPC                       // -3
+err4  OPC=H+OPC                       // -4
+err5  MAR=H+OPC                       // -5
+err6  OPC=H=1                         // 1
+err7  OPC=H=H+OPC                     // 10
+err8  OPC=H=H+OPC                     // 100
+err9  OPC=H=H+OPC                     // 1000
+err10 OPC=H=H+OPC+1                   // 10001
+err11 OPC=H=H+OPC                     // 100010
+err12 MDR=H+OPC+1;wr                  // 1000101 'E'
+err13 OPC=H=-1                        // compute IO address
+err14 OPC=H+OPC                       // -2
+err15 OPC=H+OPC                       // -3
+err16 MAR=H+OPC                       // -4
+err17 OPC=H=1                         // 1
+err18 OPC=H=H+OPC                     // 10
+err19 OPC=H=H+OPC+1                   // 101
+err20 OPC=H=H+OPC                     // 1010
+err21 OPC=H=H+OPC                     // 10100
+err22 OPC=H=H+OPC+1                   // 101001
+err23 MDR=H+OPC;wr                    // 1010010 'R'
+err24 OPC=H=-1                        // compute IO address
+err25 OPC=H+OPC                       // -2
+err26 MAR=H+OPC                       // -3
+err27 OPC=H=1                         // 1
+err28 OPC=H=H+OPC                     // 10
+err29 OPC=H=H+OPC+1                   // 101
+err30 OPC=H=H+OPC                     // 1010
+err31 OPC=H=H+OPC                     // 10100
+err32 OPC=H=H+OPC+1                   // 101001
+err33 MDR=H+OPC;wr                    // 1010010 'R'
+err34 OPC=H=-1                        // compute IO address
+err35 MAR=H+OPC                       // -2
+err36 OPC=H=1                         // 1
+err37 OPC=H=H+OPC                     // 10
+err38 OPC=H=H+OPC                     // 100
+err39 OPC=H=H+OPC+1                   // 1001
+err40 OPC=H=H+OPC+1                   // 10011
+err41 OPC=H=H+OPC+1                   // 100111
+err42 MDR=H+OPC+1;wr                  // 1001111 'O'
+err43 MAR=H=-1                        // compute IO address
+err44 OPC=H=1                         // 1
+err45 OPC=H=H+OPC                     // 10
+err46 OPC=H=H+OPC+1                   // 101
+err47 OPC=H=H+OPC                     // 1010
+err48 OPC=H=H+OPC                     // 10100
+err49 OPC=H=H+OPC+1                   // 101001
+err50 MDR=H+OPC;wr                    // 1010010 'R'
+err51 goto halt1

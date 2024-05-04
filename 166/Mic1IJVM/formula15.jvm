@@ -1,0 +1,67 @@
+    /**********************************************************/
+    /*Il seguente codice permette di prendere come parametri i*/ 
+    /* valori di a, b, c, d, e. Restituisce il minimo tra    */
+    /* ((a+b)*c) e ((c+d)*e)                                  */
+    /**********************************************************/
+
+.constant
+OBJREF 0
+.end-constant
+
+
+// il metodo mul e quello che produce la moltiplicazione
+.method mul(m,n) 
+ILOAD n 
+rit:   IINC m  -1 
+       ILOAD m 
+       IFEQ fine 
+       ILOAD n 
+       IADD 
+       GOTO rit 
+fine: IRETURN 
+.end-method
+
+
+
+// il metodo che permette di trovare il minimo tra le due
+// espressioni.
+.method ex(a,b,c,d,e) 
+.var
+i
+j
+.end-var
+LDCW OBJREF
+ILOAD a
+ILOAD b
+IADD
+ILOAD c
+INVOKEVIRTUAL mul
+ISTORE i
+LDCW OBJREF
+ILOAD c
+ILOAD d
+IADD
+ILOAD e
+INVOKEVIRTUAL mul
+ISTORE j
+ILOAD i
+ILOAD j
+ISUB
+IFLT ris
+ILOAD j
+GOTO fine
+ris: ILOAD i
+fine: IRETURN
+.end-method
+
+
+.main
+LDCW OBJREF
+IN //permette di inserire dallo Standard I/O il valore di a
+IN //permette di inserire dallo Standard I/O il valore di b
+IN //permette di inserire dallo Standard I/O il valore di c
+IN //permette di inserire dallo Standard I/O il valore di d
+IN //permette di inserire dallo Standard I/O il valore di e
+invokevirtual ex
+halt
+.end-main

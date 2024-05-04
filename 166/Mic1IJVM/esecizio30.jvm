@@ -1,0 +1,36 @@
+    /**********************************************************/
+    /* Esercizio n.30 della PAGINA WEB                        */
+    /**********************************************************/
+
+
+
+.method ex30(a,b,c) 
+.var
+ i
+ j
+.end-var
+
+
+        ILOAD  a
+        ISTORE i
+        BIPUSH 3        
+        ILOAD  b        
+        ISUB
+        IFEQ   label
+        ILOAD  j
+        IFEQ   label
+        IINC   j  1
+label:  IRETURN
+
+.end-method
+
+
+
+.main
+IN
+IN
+IN
+invokevirtual ex30
+
+halt
+.end-main

@@ -1,0 +1,58 @@
+    /**********************************************************/
+    /*   Esercizio n.22 della PAGINA WEB                      */
+    /**********************************************************/
+// Considerate un metodo JAVA che abbia 4 parametri, b3, b2, b1, b0,
+// che possono avere come valore 0 o 1. Il metodo restituisce il
+// numero la cui rappresentazione in binario e' b3 b2 b1 b0.
+// Scrivere il codice IJVM che traduca tale metodo ed il segmento
+// di codice che traduca la chiamata di tale metodo con parametri
+// attuali 1,1,0,1. Specificare quali saranno i 4 byte che verranno
+// inseriti nella method area prima del codice IJVM che traduce il
+// metodo.
+
+
+
+.method conv(b3,b2,b1,b0) 
+.var
+ count
+partial
+.end-var
+// Inserimento delle istruzioni del metodo.
+
+             ILOAD b0
+             ILOAD b1
+             ILOAD b2
+             ILOAD b3          //pongo i 4 bit sullo stack, dal meno al piu' significativo
+             BIPUSH 4
+             ISTORE count      //inizializzazione contatore bit
+             BIPUSH 0
+             ISTORE partial    //inizializzazione risultato parziale
+loop:        ILOAD partial
+             DUP
+             IADD
+             ISTORE partial    // moltiplica per 2 il risultato parziale
+             IFEQ updatecount  // salta se il bit b(count-1) e' 0
+             IINC partial 1    // se l'i-esimo bit e' 1 incrementa risultato parziale
+updatecount: IINC count -1     // decrementa contatore
+             ILOAD count
+             IFEQ end          // termina se contatore = 0
+             GOTO loop
+
+end:         ILOAD partial       
+             IRETURN
+.end-method
+
+
+
+.main
+
+// istruzioni del metodo main.
+
+BIPUSH 1
+BIPUSH 1
+BIPUSH 0
+BIPUSH 1
+INVOKEVIRTUAL conv
+
+halt
+.end-main

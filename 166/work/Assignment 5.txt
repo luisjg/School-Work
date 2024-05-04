@@ -1,0 +1,103 @@
+Luis Guzman
+
+Assingment 5
+Pages 431-433
+#1, #3, #6,
+#7(ignore “how many bits” and may use temp as a temporary memory location, if needed),
+#10, #12 a,b, #16, #17, #19
+
+
+#1 big endian 3 bit word
+   0000 0000 0000 0000 0000 0000 0000 0011
+   = 3
+
+   transformed 3 bit word to little endian
+   1100 0000 0000 0000 0000 0000 0000 0000
+   = 3221225472
+
+#3 xxxx xxxx xxxx = 12 bit addresses
+   yyyy = 4 bit register
+   1111 1111 1111 1101 xxxx xxxx xxxx yyyy
+   1111 1111 1111 1110 xxxx xxxx xxxx yyyy
+
+   1111 1111 1111 1111 xxxx xxxx xxxx yyyy
+
+   1111 1111 1111 1111 1111 1111 1111 0000
+
+#6 a) LOAD IMMEDIATE 20 // loads word 20 from memory
+   b) LOAD DIRECT 20    // loads the address of 20
+   c) LOAD INDIRECT 20  // loads the value 40 
+   d) LOAD IMMEDIATE 30 // loads the word 30 from memory
+   e) LOAD DIRECT 30    // loads the address of 30
+   f) LOAD INDIRECT 30  // loads the value 50
+
+#7 compute 
+   X = (A + B X C) / (D - E x F)
+   Registers X,Y,Z
+
+   0 Address
+   //Assuming A,B,C,D,E,F are already on stack.
+   POP  C
+   POP  B
+   MUL    // multiples and pushes to B
+   POP B
+   POP A
+   ADD   // adds and pushes to A
+   POP F
+   POP E
+   MUL   // multiplies and pushes to E
+   POP E
+   POP D
+   SUB   // subtracts and pushes to D
+
+   1 Address
+   //Assuming A,B,C,D,E,F are already on memory.
+   LOAD  C
+   MUL   B
+   STORE B
+   LOAD  B
+   ADD   A
+   STORE A
+   LOAD  F
+   MUL   E
+   STORE E
+   LOAD  E
+   SUB   D
+   STORE D
+   LOAD  A
+   DIV   D
+
+   2 Address
+   //Assuming A,B,C,D,E,F are already on memory.
+   MUL   B = B*C
+   ADD   A = A+B
+   MUL   E = E*F
+   SUB   D = D-E
+   DIV   A = A/D
+
+   3 Address
+   //Assuming A,B,C,D,E,F are already on memory.
+   MUL   temp = BxC
+   MOV   temp = B
+   ADD   temp = A+B
+   MOV   temp = A
+   MUL   temp = ExF
+   MOV   temp = E
+   SUB   temp = D-E
+   MOV   temp = D 
+   DIV   temp = A/D
+   MOV   temp = A
+
+#10 a) A+B+C+D-E = AB+CD+E-
+    b) (A-B)x(C+D)+E = (AB-)(CD+)xE+
+    c) (AxB)+(CxD)-E = (ABx)(CDx)+E-
+    d) (A-B)x(((C-DxE)/F)/G)xH = (AB-)(((DExC-)F/)G/)Hx
+
+#12 a) A-B+CxD
+    b) A/B+C/D
+
+#16 From the figure, 3 Registers since the instructionsstate 2 source registers and 1 destination register.
+
+#17 The hardware will know when to use it since it will look for bit 23. The hardware already knows what to do when bit 23 is present and sees there's a Destination Register and 1 source register resulting in option 2. When bit 23 is off and it sees that there is a Destination and 2 Source registers, it does option 1. When bit 23 isn't specified and there are no Destination registers it will know that option 3 is being used.
+
+#19 The advantage is for loading program constants but only works on signed words.

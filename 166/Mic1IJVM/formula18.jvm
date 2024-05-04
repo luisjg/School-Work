@@ -1,0 +1,42 @@
+    /**********************************************************/
+    /*Il seguente codice permette di prendere come parametri i*/ 
+    /* valori di a, b, c, d. Restituisce il valore di (a+b)   */
+    /* se (a+b+c+d) è 10 altrimenti restituisce (a+c)         */
+    /**********************************************************/
+
+.constant 
+OBJREF 0
+.end-constant
+
+
+.method ex(a,b,c,d) 
+ILOAD a
+ILOAD b
+IADD
+ILOAD c
+IADD
+ILOAD d
+IADD
+BIPUSH 10
+IFICMPEQ ris   // confronta l'espressione (a+b+c+d) con il valore 10
+GOTO ros
+ris: ILOAD a
+ILOAD b
+IADD
+GOTO fine
+ros: ILOAD a
+ILOAD c
+IADD
+fine: IRETURN
+.end-method
+
+.main
+LDCW OBJREF
+IN  //permette di inserire dallo Standard I/O il valore di a
+IN  //permette di inserire dallo Standard I/O il valore di b
+IN  //permette di inserire dallo Standard I/O il valore di c
+IN  //permette di inserire dallo Standard I/O il valore di d
+invokevirtual ex
+halt
+
+.end-main

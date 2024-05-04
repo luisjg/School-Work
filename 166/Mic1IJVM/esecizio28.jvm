@@ -1,0 +1,81 @@
+    /**********************************************************/
+    /* Esercizio n.28 della PAGINA WEB                        */
+    /**********************************************************/
+// Il cugino del noto matematico Fibonacci, tal Birbonacci, e'
+// famoso per le sue sequenze di Birbonacci (esiste una sequenza
+// di Birbonacci per ogni numero naturale). Gli elementi della
+// n-esima sequenza di Birbonacci sono definiti ricorsivamente
+// nel seguente modo :
+// Birb(n,0) = n
+// Birb(n,1) = n2 
+// Birb(n,m) = n + ( Birb(n,m-1) * Birb(n,m-1) ) 
+// Scrivere un metodo IJVM che prenda in input due valori a e b e
+// calcoli il b-esimo numero della a-esima sequenza di Birbonacci,
+// in altre parole, che calcoli Birb(a,b).
+// Supponete di avere a disposizione un metodo per il calcolo del
+// prodotto di due naturali. 
+
+
+
+
+
+.constant
+OBJREF 0
+.end-constant
+
+
+.method Mult(m,n) 
+
+// Inserire le istruzioni del metodo.
+
+ILOAD n 
+rit:   IINC m  -1 
+       ILOAD m 
+       IFEQ fine 
+       ILOAD n 
+       IADD 
+       GOTO rit 
+fine: IRETURN 
+.end-method
+
+
+.method Birb(n,m) 
+
+ILOAD m		
+		IFEQ m-is-zero	// branch if m=0 
+		ILOAD m
+		BIPUSH 1
+		ISUB		// compute m-1
+		IFEQ m-is-one	// branch if m=1
+		LDCW OBJREF    // push objref for the multiplication 
+		LDCW OBJREF	// push objref for the computation of Birb(n, m-1)
+		ILOAD n		// push first argument of Birb(n, m-1)
+		ILOAD m
+		BIPUSH 1
+ 		ISUB		// compute m-1, the second argument of Birb(n, m-1)
+		INVOKEVIRTUAL Birb	//compute Birb(n, m-1)
+		DUP		// push a copy of Birb(n, m-1) 
+		INVOKEVIRTUAL Mult // compute Birb(n, m-1) * Birb(n, m-1)
+		ILOAD n
+		IADD		// compute n + Birb(n, m-1) * Birb(n, m-1)
+		GOTO end
+m-is-zero:	ILOAD n
+ 		GOTO end
+m-is-one:	LDCW OBJREF  	// push objref for the multiplication
+		ILOAD n
+		DUP
+		INVOKEVIRTUAL Mult // compute n*n
+end:		IRETURN
+
+.end-method
+
+
+
+.main
+IN     // permette di acquisire dallo Standard I/O il valore di n
+IN     // permette di acquisire dallo Standard I/O il valore di m
+invokevirtual Birb
+
+halt
+
+.end-main

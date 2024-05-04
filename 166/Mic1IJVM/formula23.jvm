@@ -1,0 +1,61 @@
+    /**********************************************************/
+    /*Il seguente codice permette di prendere come parametri i*/ 
+    /* valori di a, b, c, d. Restituisce il valore di(a+c+d)  */
+    /* se (a+b) è 12  altrimenti restituisce (b+c+d) se 
+      (a+b) è minore di 12 invece si otterrà (c+d) se (a+b) 
+      è maggiore di 12
+    /**********************************************************/
+
+.constant 
+OBJREF 0
+.end-constant
+
+.method ex(a,b,c,d) 
+.var
+i
+.end-var
+ILOAD a
+ILOAD b
+IADD
+BIPUSH 12
+ISUB
+DUP
+ISTORE i
+IFEQ primo
+ILOAD i
+IFLT sec
+GOTO ter
+
+primo: ILOAD a
+ILOAD c
+IADD
+ILOAD d
+IADD
+GOTO fine
+
+sec: ILOAD b
+ILOAD c
+IADD
+ILOAD d
+IADD
+GOTO fine
+
+ter: ILOAD c
+     ILOAD d
+     IADD
+
+fine: IRETURN
+.end-method
+
+
+
+.main
+LDCW OBJREF
+IN  // permette di acquisire dallo Standard I/O il valore di a
+IN  // permette di acquisire dallo Standard I/O il valore di b
+IN  // permette di acquisire dallo Standard I/O il valore di c
+IN  // permette di acquisire dallo Standard I/O il valore di d
+invokevirtual ex
+halt
+
+.end-main

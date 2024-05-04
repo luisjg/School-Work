@@ -1,0 +1,51 @@
+    /**********************************************************/
+    /* Esercizio n.2 sulla macchina IJVM                      */
+    /**********************************************************/
+
+// Considerate un metodo Java che prenda in input due parametri
+// formali k e j (numeri interi) e che restituisca k+4 se 2*(j+k) 
+// e' maggiore di 15 e j-1 altrimenti.
+// Scrivere il codice IJVM che traduca tale metodo ed il segmento
+// di codice che traduca la chiamata di tale metodo con parametri 
+// attuali 5 e 7.
+
+
+
+.constant
+OBJREF 0
+.end-constant
+
+.method ex2(j,k) // restituisca k+4 se 2*(j+k) e' maggiore di 15 
+                 // e j-1 altrimenti.
+
+                    
+                    // Codice in esadecimale
+        ILOAD j     // 0x15 0x02
+        ILOAD k     // 0x15 0x03
+        IADD        // 0x60
+        DUP         // 0x59
+        IADD        // 0x60
+        BIPUSH 15   // 0x10 0x0F
+        ISUB        // 0x64
+        IFLT L1     // 0x9B 0x00 0x0B
+        ILOAD k     // 0x15 0x02
+        BIPUSH 4    // 0x10 0x01
+        Iadd        // 0x64
+        GOTO FINE   // 0xA7 0x00 0x08
+     L1: ILOAD j    // 0x15 0x03
+        BIPUSH 1    // 0x10 0x04
+        Isub        // 0x60
+   FINE: IRETURN    // 0xAC
+
+
+.end-method
+
+.main
+        LDCW OBJREF
+        BIPUSH 5
+        BIPUSH 7
+        INVOKEVIRTUAL ex2
+
+
+Halt
+.end-main

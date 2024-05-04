@@ -1,0 +1,47 @@
+    /**********************************************************/
+    /* Esercizio  sulla macchina IJVM                         */
+    /**********************************************************/
+
+Considerate un metodo Java che prenda in input due parametri
+ formali k e j (numeri interi) e che restituisca (k*2)+j 
+se (2*(j+k))+j e' maggiore di 7 e (j+k) altrimenti.
+
+.constant 
+OBJREF 0
+.end-constant
+
+.method ex(j,k) // restituisca k+4 se 2*(j+k) e' maggiore di 15 
+                 // e j-1 altrimenti.
+
+                    
+                    
+        ILOAD j     
+        ILOAD k     
+        IADD        
+        DUP         
+        IADD        
+        ILOAD j
+        IADD  
+        BIPUSH 7   
+        ISUB        
+        IFLT L1     
+        ILOAD k     
+        DUP   
+        Iadd        
+        ILOAD j
+        IADD
+        GOTO FINE   
+     L1: ILOAD j    
+        ILOAD k    
+        IADD        
+   FINE: IRETURN   
+.end-method
+
+.main
+LDCW OBJREF
+IN  // permette di acquisire dallo Standard I/O il valore di j
+IN  // permette di acquisire dallo Standard I/O il valore di k
+INVOKEVIRTUAL ex
+
+Halt
+.end-main

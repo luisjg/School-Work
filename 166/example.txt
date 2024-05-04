@@ -1,0 +1,12 @@
+loop: in
+      dup
+      bipush '!'
+      if_icmpeg quit
+      dup
+      bipush 1
+      iand
+      ifeq even
+      out
+      goto loop
+even: pop goto loop
+quit: HALT

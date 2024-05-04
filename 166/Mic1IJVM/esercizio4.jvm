@@ -1,0 +1,35 @@
+    /**********************************************************/
+    /* Esercizio n.4 sulla macchina IJVM                      */
+    /**********************************************************/
+
+// Qual'e' il valore che si trova in cima allo stack dei dati dopo
+// l'esecuzione delle seguenti istruzioni IJVM? 
+//BIPUSH 3
+//BIPUSH 3
+//IADD
+//BIPUSH 3
+//IADD
+//IADD
+//BIPUSH 3
+//IADD
+
+
+
+
+
+.main
+BIPUSH 3
+BIPUSH 3
+IADD
+BIPUSH 3
+IADD
+IADD
+BIPUSH 3
+IADD
+
+// chiaramente non si ha risultato perchè manca da sommare 
+// un altro valore che non abbiamo sullo stack, quindi
+// Il valore e' indeterminato.
+      
+Halt
+.end-main

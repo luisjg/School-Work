@@ -1,0 +1,62 @@
+    /**********************************************************/
+    /*    ESERCIZIO N.11 della PAGINA WEB                     */
+    /**********************************************************/
+
+// Supponete di avere un metodo Java che calcola il fattoriale di
+// un numero in modo ricorsivo. Scrivere il codice IJVM che traduce
+// tale metodo (cioe' tutta la parte che va inserita nella
+// Method Area).
+// Scrivere inoltre il codice che realizza la chiamata del metodo
+// con parametro attuale 3. 
+
+
+
+
+.constant
+OBJREF 0
+ .end-constant
+
+.method mul(m,n) 
+// le istruzioni del metodo.
+
+ILOAD n 
+rit:   IINC m  -1 
+       ILOAD m 
+       IFEQ fine 
+       ILOAD n 
+       IADD 
+       GOTO rit 
+fine: IRETURN 
+.end-method
+
+
+.method fat(n) 
+// le istruzioni del metodo.
+
+LDCW OBJREF 
+        ILOAD n 
+        LDCW OBJREF
+        ILOAD n 
+        DUP 
+        IFEQ base 
+        BIPUSH 1 
+        ISUB 
+        INVOKEVIRTUAL fat 
+        INVOKEVIRTUAL mul 
+        GOTO fine 
+base: POP 
+        BIPUSH 1 
+fine:  IRETURN 
+
+
+.end-method
+
+.main
+
+// Istruzioni del metodo main.
+LDCW OBJREF
+BIPUSH 3
+invokevirtual fat
+
+halt
+.end-main

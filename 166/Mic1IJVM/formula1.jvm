@@ -1,0 +1,38 @@
+    /**********************************************************/
+       Il seguente programma realizza la traduzione in Assembly
+       IJVM della formula  i= (j+k+4)*2, ottenendo anche il 
+       valore di tale formula, passando dallo Standard I/O, 
+       i parametri attuali che si desiderano.
+    /**********************************************************/
+
+.constant 
+OBJREF 0
+.end.constant
+
+
+// Questo è il metodo che permette di tradurre l'istruzione
+// i= (j+k+4)*2
+   
+.method nome(j,k) 
+.var
+i
+.end-var
+LDCW OBJREF
+ILOAD j 
+ILOAD k 
+IADD 
+ISTORE i 
+IINC i  4  //incrementa di 4 il valore di i 
+ILOAD i
+DUP
+IADD
+IRETURN
+.end-method
+
+.main
+IN    // permette di acquisire dallo Standard I/O il valore di j
+IN    // permette di acquisire dallo Standard I/O il valore di k
+invokevirtual nome
+halt
+
+.end-main

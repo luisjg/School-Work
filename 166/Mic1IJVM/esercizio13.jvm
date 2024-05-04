@@ -1,0 +1,46 @@
+    /**********************************************************/
+    /* Esercizio n.13  della PAGINA WEB                       */
+    /**********************************************************/
+
+// Supponete di avere un metodo Java che calcola l'ennesimo elemento
+// della sequenza di Fibonacci (ovviamente in modo ricorsivo).
+// Scrivere il codice IJVM che traduce tale metodo (cioe' tutta la
+// parte che va inserita nella Method Area).
+// Scrivere inoltre il codice che realizza la chiamata del metodo
+// con parametro attuale 4.
+
+
+.constant
+objref 0
+.end-constant
+
+
+.method fib(n) 
+ILOAD n
+IFEQ end
+ILOAD n
+BIPUSH 1
+IFICMPEQ end
+LDCW objref
+ILOAD n
+BIPUSH 1
+ISUB
+INVOKEVIRTUAL fib
+LDCW objref
+ILOAD n
+BIPUSH 2
+ISUB
+INVOKEVIRTUAL fib
+IADD
+IRETURN
+end: BIPUSH 1
+     IRETURN
+.end-method
+
+
+
+.main
+IN      // permette di acquisire dallo Standard I/O il valore di n
+invokevirtual fib
+halt
+.end-main

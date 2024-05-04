@@ -1,0 +1,44 @@
+    /**********************************************************/
+    /* Esercizio n.21 della PAGINA WEB                        */
+    /**********************************************************/
+// Scrivere il codice IJVM corrispondente ad un metodo Java che
+// abbia due numeri naturali come parametri e che restituisca il
+// piu' grande dei parametri se il piu' piccolo e' uguale a 0,
+// altrimenti restituisca il piu' piccolo dei parametri (Se il
+// valore dei parametri e' uguale restituisce tale valore).
+
+
+
+.method m1(1,2) 
+ILOAD 1
+    ILOAD 2
+    ISUB
+    IFLT L1   // if arg1 >= arg2 goto L1
+    ILOAD 1
+    IFEQ L2
+    ILOAD 1
+end: IRETURN
+L1: ILOAD 1
+    IFEQ L3
+    ILOAD 1
+    GOTO end
+L2: ILOAD 2
+    GOTO end
+L3: ILOAD 1
+    GOTO end
+                                                   
+.end-method
+
+
+
+.main
+
+// Inserimento delle istruzioni del metodo main.
+
+        BIPUSH 5
+        BIPUSH 7
+        INVOKEVIRTUAL m1
+
+halt
+
+.end-main

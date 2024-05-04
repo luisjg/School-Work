@@ -1,0 +1,62 @@
+    /**********************************************************/
+    /*Il seguente codice permette di prendere come parametri i*/ 
+    /* valori di a, b, c, d. Restituisce il valore di(a+c+d)  */
+    /* se (a/b) è 8  altrimenti restituisce (b+c+d)           */
+    /**********************************************************/
+
+.constant
+OBJREF 0
+.end-constant
+
+.method div(m,n) 
+.var
+ i
+.end-var
+BIPUSH 0 
+       ISTORE i 
+rit:   ILOAD m 
+       ILOAD n 
+       ISUB 
+       DUP 
+       ISTORE m 
+       IFLT fine 
+       IINC i  1 
+       GOTO rit 
+fine: ILOAD i 
+       IRETURN 
+.end-method
+
+
+
+.method ex(a,b,c,d)
+LDCW OBJREF
+ILOAD a
+ILOAD b
+INVOKEVIRTUAL div
+BIPUSH 8
+IFICMPEQ sec  // confronta (a/b) con valore 8 e salta se sono uguali
+
+primo: ILOAD a
+ILOAD c
+IADD
+ILOAD d
+IADD
+GOTO fine
+
+sec: ILOAD b
+ILOAD c
+IADD
+ILOAD d
+IADD
+fine: IRETURN
+.end-method
+
+.main
+LDCW OBJREF
+IN  // permette di acquisire dallo Standard I/O il valore di a
+IN  // permette di acquisire dallo Standard I/O il valore di b
+IN  // permette di acquisire dallo Standard I/O il valore di c
+IN  // permette di acquisire dallo Standard I/O il valore di d
+invokevirtual ex
+halt
+.end-main

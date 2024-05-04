@@ -1,0 +1,35 @@
+    /**********************************************************/
+    /* Esercizio n.3 sulla macchina IJVM                      */
+    /**********************************************************/
+
+// Qual'e' il valore che si trova in cima allo stack dei dati dopo
+// l'esecuzione delle seguenti istruzioni IJVM? 
+//BIPUSH 2
+//BIPUSH 3
+//IADD
+//BIPUSH 4
+//IADD
+//BIPUSH 4
+//BIPUSH 2
+//ISUB
+//BIPUSH 1
+//IADD
+//ISUB
+
+
+
+.main
+BIPUSH 2
+BIPUSH 3
+IADD
+BIPUSH 4
+IADD
+BIPUSH 4
+BIPUSH 2
+ISUB
+BIPUSH 1
+IADD
+ISUB
+      
+Halt
+.end-main

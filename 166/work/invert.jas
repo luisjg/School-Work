@@ -1,0 +1,31 @@
+// 
+//  invert.jas
+//
+//   Author
+//     Luis Guzman
+//
+//   Description
+//     Sample assembly program that reads a key press and inverts the case
+//     print an '!'
+
+.main
+
+L1:   IN            // request character input from memory
+      DUP           // duplicate top of stack (inputed char) for comparing
+      BIPUSH 0x0    // push 0x0 for comparison
+      IF_ICMPEQ L2  // if no characters are available for input, loop
+      DUP           // Dupicate top of stack and push to stack
+      BIPUSH 'a'    // push 'a' since 0x61 biggest char
+      ISUB          // Subtract - 'a'
+      IFLT LOW      // Compare and branch to LOW if < 0 
+      BIPUSH 0X20   // then Push 0x20 the offset of 'a' and 'A'
+      ISUB          // top of stack char - 0x20
+      OUT           // print out the new character
+
+LOW:  BIPUSH 0x20   // else push 0x20 the offset of 'a' and 'A'
+      IADD          // top of stack char + 0x20
+      OUT           // print out the new character
+
+L2:   POP           // No key has been pushed, so clear the stack,
+      GOTO L1       // and start over
+.end-main

@@ -1,0 +1,50 @@
+    /**********************************************************/
+    /*               Esercizio n.6 della Pagina WEB           */
+    /**********************************************************/
+
+// Tradurre il linguaggio Assembly IJVM la seguente parte di codice:
+
+// i=j+k
+// if (i==3)
+//  k=0;
+//  i=0;
+// else
+//  j=j-1
+
+
+
+.method calcola(j,k) 
+
+.var
+i
+.end-var
+
+
+   ILOAD j      //i=j+k
+   ILOAD k
+   IADD
+   ISTORE i
+   ILOAD i      //if (i==3)
+   BIPUSH 3
+   IFICMPEQ L1
+   ILOAD j      //j=j-1
+   BIPUSH 1
+   ISUB
+   ISTORE j
+   GOTO L2
+L1: BIPUSH 0     //k=0
+   ISTORE k
+   BIPUSH 0     //i=0
+   ISTORE i
+L2: IRETURN
+
+.end-method
+
+.main
+IN       // permette di acquisire dallo Standard I/O il valore di j
+IN       // permette di acquisire dallo Standard I/O il valore di k
+
+Invokevirtual calcola
+
+Halt
+.end-main

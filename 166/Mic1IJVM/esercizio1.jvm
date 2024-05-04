@@ -1,0 +1,35 @@
+    /**********************************************************/
+    /* Esercizio n.1 sulla macchina IJVM riferito al quesito  */
+       n.7 del TANENBAUM, ovvero dare la traduzione per la
+       seguente istruzione Java: i=j+k+4
+    /**********************************************************/
+
+
+.method calcola(j,k) // Calcola il valore di i=j+k+4.
+.var
+i
+.end-var
+
+ILOAD j 
+ILOAD k 
+IADD 
+ISTORE i 
+IINC i  4 
+// in questo punto finisce la soluzione del problema il resto viene 
+// utilizzato per produrre sullo standard I/O il risultato finale
+
+Iload i 
+OUT     // questa istruzione è utile soltanto per stampare sullo
+        // standard I/O il risultato finale presente sulla variabile "i"
+
+Ireturn
+.end-method
+
+.main
+IN       // permette di acquisire dallo Standard I/O il valore di j
+IN       // permette di acquisire dallo Standard I/O il valore di k
+
+Invokevirtual calcola
+
+Halt
+.end-main

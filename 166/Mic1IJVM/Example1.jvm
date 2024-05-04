@@ -1,0 +1,160 @@
+     /******************************************************/
+     /*****************  File: Example1.jvm  ***************/
+     /**                                                  **/
+     /**  Data creazione : 24/10/2002.                    **/
+     /** 	                                          **/
+     /**  Autore         : Herbert Bonaffini.             **/
+     /**          	                                  **/
+     /******************************************************/
+     /******************************************************/
+
+
+
+.constant
+OBJREF 0
+.end-constant
+
+
+/***********************************************/
+/* Il seguente è il codice JAVA del metodo mul */
+/***********************************************/
+
+/*
+
+int mul (int a,int b) {
+
+ int acc = 0;
+ while (a--)
+      acc += b;
+ return acc;
+
+}
+
+*/
+
+/****************************************************/
+/* Il seguente metodo calcola il prodotto tra a e b */
+/****************************************************/
+
+.method mul(a, b)
+
+.var
+acc
+.end-var 
+
+
+        BIPUSH 0
+loop:   ILOAD a
+        IFEQ end    // if(!a) goto end;
+        IINC a -1   // a--;
+        ILOAD b
+        IADD
+        GOTO loop
+end:    IRETURN     // return acc;
+
+.end-method
+
+
+/**************************************/
+/* Il seguente è il codice JAVA del   */
+/* metodo fact in versione iterativa. */
+/**************************************/
+
+/*
+int fact(int n) {
+
+ int acc = 1;
+ for (int i = 1; i <= n; i++)
+   acc *= i;
+ return acc;
+
+}
+*/
+
+
+/*************************************************/
+/* Il seguente metodo calcola il fattoriale di n */
+/*************************************************/
+/*              Versione iterativa               */
+/*************************************************/
+
+.method fact(n)
+
+.var
+   acc
+   i
+.end-var 
+
+        BIPUSH 1
+        ISTORE acc        // acc = 1;
+        BIPUSH 1
+        ISTORE i          // i = 1;
+loop:   ILOAD n
+        ILOAD i
+        ISUB
+        IFEQ end
+        IINC i 1          // i++;
+        LDCW OBJREF
+        ILOAD acc
+        ILOAD i
+        INVOKEVIRTUAL mul 
+        ISTORE acc        // acc *= i; 
+        GOTO loop
+end:    ILOAD acc
+        IRETURN           // return acc;
+
+.end-method
+
+
+
+
+/**************************************/
+/* Il seguente è il codice JAVA del   */
+/* metodo fact in versione ricorsiva. */
+/**************************************/
+
+/*
+int fact1(int n) {
+
+ if (n)
+  return n * fact1(n - 1);
+ return 1;
+
+}
+*/
+
+/*************************************************/
+/* Il seguente metodo calcola il fattoriale di n */
+/*************************************************/
+/*              Versione ricorsiva               */
+/*************************************************/
+
+.method fact1(n)
+
+        ILOAD n
+        IFEQ end             // if(!n) goto end;
+        LDCW OBJREF
+        ILOAD n
+        IINC n -1            // n--;
+        LDCW OBJREF
+        ILOAD n
+        INVOKEVIRTUAL fact1
+        INVOKEVIRTUAL mul
+        IRETURN              // return n * fact1(n - 1);
+end:    BIPUSH 1
+        IRETURN              // return 1;
+
+
+.end-method
+
+
+
+.main
+
+        LDCW OBJREF
+        BIPUSH 5
+        INVOKEVIRTUAL fact
+        OUT
+        HALT
+
+.end-main

@@ -1,0 +1,77 @@
+    /**********************************************************/
+    /* Esercizio n.9 sulla macchina IJVM                      */
+    /**********************************************************/
+
+// In IJVM non abbiamo l'istruzione di Moltiplicazione ne' quella
+// di Divisione Intera. Scrivere del codice IJVM che realizzi
+// queste funzioni matematiche. 
+
+
+
+.constant
+OBJREF 0
+.end-constant
+
+.method div(m,n) 
+.var
+i
+.end-var
+
+// Inserimento delle istruzioni del metodo.
+
+BIPUSH 0 
+       ISTORE i 
+rit:   ILOAD m 
+       ILOAD n 
+       ISUB 
+       DUP 
+       ISTORE m 
+       IFLT fine 
+       IINC i  1 
+       GOTO rit 
+fine: ILOAD i 
+       IRETURN 
+.end-method
+
+
+.method mul(m,n) 
+
+// Inserimento delle istruzioni del metodo.
+
+ILOAD n 
+rit:   IINC m  -1 
+       ILOAD m 
+       IFEQ fine 
+       ILOAD n 
+       IADD 
+       GOTO rit 
+fine: IRETURN 
+.end-method
+
+
+// Il metodo sottostante esegue l'istruzione  ((a*b)+7) div c
+// sfruttando le due funzioni div e mul definite sopra: 
+
+.method f(a,b,c) 
+LDCW OBJREF 
+DUP 
+ILOAD a 
+ILOAD b 
+INVOKEVIRTUAL mul 
+BIPUSH 7 
+IADD 
+ILOAD c 
+INVOKEVIRTUAL div 
+IRETURN 
+.end-method 
+
+
+.main
+IN    // permette di acquisire dallo Standard I/O il valore di a
+IN    // permette di acquisire dallo Standard I/O il valore di b
+IN    // permette di acquisire dallo Standard I/O il valore di c
+
+invokevirtual f
+
+Halt
+.end-main

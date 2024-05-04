@@ -1,0 +1,42 @@
+    /**********************************************************/
+      Il seguente programma realizza la traduzione in Assembly
+      IJVM della seguente specifica: la restituzione del valore 
+      k+4 se 2*(j+k) e' maggiore di 15 e del valore j-1 altrimenti.
+      Si introducono dallo Standard I/O i parametri attuali che 
+      si desiderano.                         
+    /**********************************************************/
+
+.constant 
+OBJREF 0
+.end-constant
+
+// Il metodo che realizza la nostra specifica è:
+
+.method ex(j,k)               
+                   
+        ILOAD j     
+        ILOAD k     
+        IADD       
+        DUP       
+        IADD        
+        BIPUSH 15  
+        ISUB        
+        IFLT L1     
+        ILOAD k     
+        BIPUSH 4    
+        Iadd        
+        GOTO FINE   
+     L1: ILOAD j    
+        BIPUSH 1    
+        Isub       
+   FINE: IRETURN    
+.end-method
+
+.main
+LDCW OBJREF
+IN   // permette di acquisire dallo Standard I/O il valore di j
+IN   // permette di acquisire dallo Standard I/O il valore di k
+INVOKEVIRTUAL ex
+
+Halt
+.end-main

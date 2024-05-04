@@ -1,0 +1,36 @@
+    /**********************************************************/
+    /* Programma moltiplicazione                              */
+    /**********************************************************/
+
+.constant 
+OBJREF 0
+.end-constant
+
+
+.method mul(m,n) 
+
+
+// Inserire le istruzioni del metodo.
+
+ILOAD n 
+rit:   IINC m  -1 
+       ILOAD m 
+       IFEQ fine 
+       ILOAD n 
+       IADD 
+       GOTO rit 
+fine: IRETURN 
+.end-method
+
+
+
+.main
+
+// Inserire le istruzioni del metodo main.
+LDCW OBJREF
+IN
+IN
+invokevirtual mul
+
+halt
+.end-main

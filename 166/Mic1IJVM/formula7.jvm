@@ -1,0 +1,43 @@
+    /**********************************************************/
+    /*Il seguente codice permette di prendere come parametri i*/ 
+    /* valori di j, k, m, n. Restituisce il massimo tra       */
+    /* (j+k) e (m+n)                                          */
+    /**********************************************************/
+
+.constant 
+OBJREF 0
+.end-constant
+
+.method ex(j,k,m,n) 
+.var
+i
+a
+.end-var
+ILOAD j
+ILOAD k
+IADD
+ISTORE i
+ILOAD m
+ILOAD n
+IADD
+ISTORE a
+ILOAD i
+ILOAD a
+ISUB
+IFLT ris
+ILOAD i
+GOTO fine
+ris: ILOAD a
+fine: IRETURN
+.end-method
+
+.main
+LDCW OBJREF
+IN  // permette di acquisire dallo Standard I/O il valore di j
+IN  // permette di acquisire dallo Standard I/O il valore di k
+IN  // permette di acquisire dallo Standard I/O il valore di m
+IN  // permette di acquisire dallo Standard I/O il valore di n
+invokevirtual ex
+halt
+
+.end-main

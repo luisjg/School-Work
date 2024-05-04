@@ -1,0 +1,23 @@
+    /**********************************************************/
+    /* Il seguente codice è lo scheletro di un programma IJVM */
+    /**********************************************************/
+
+.constant
+ // Inserire i nomi delle costanti con i rispettivi valori
+.end-constant
+
+.method nomemetodo() // Inserire gli eventuali parametri separati da virgole
+
+.var
+ // Inserire le variabili locali del meotodo.
+.end-var
+
+// Inserire le istruzioni del metodo.
+
+.end-method
+
+.main
+
+// Inserire le istruzioni del metodo main.
+
+.end-main

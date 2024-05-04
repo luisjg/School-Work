@@ -1,0 +1,30 @@
+// 
+//   odd.jas
+//
+//   Author
+//     Tony Biehl
+//
+//   Description
+//     Sample assembly program that reads a key press and echoes the 
+//     character to standard output only if it is odd.  
+//
+
+
+.main
+
+LOOP:   IN           // request character input from memory
+      DUP           // duplicate top of stack (inputed char) for comparing
+      BIPUSH '!'    // push '!' for comparison to end
+      IF_ICMPEQ QUIT // if done, quit
+      dup
+      bipush 1       // and with 1 to see if odd
+      iand
+      ifeq   EVEN    // if even, pop character and get another
+      OUT           // else, print character
+      GOTO LOOP      // loop back to beginning of program
+
+
+EVEN:   POP          // pop the even character
+      GOTO LOOP      // and start over
+QUIT:  HALT
+.end-main

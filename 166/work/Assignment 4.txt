@@ -1,0 +1,41 @@
+Luis Guzman
+
+Assignment 4
+
+Pages 338-339
+#1, #2, #4, #6, #9, #12, #15
+
+1) Fetch, decode, execute.
+
+2) The C bus keeps track of which registers need to be written to, therefore it needs to be a bit map.
+
+4) No, there are no circumstances when Next_Address is 0x1FF and use the JMPC since Next_Address must be 0x000 or 0x100 when JMPC is used.
+
+6) i=k+n+s;
+
+   Method 1   Method 2
+
+   ILOAD  k   ILOAD  k
+   ILOAD  n   BIPUSH 5
+   IADD       IADD
+   BIPUSH 5   ILOAD  n
+   IADD       IADD
+   ISTORE i   ISTORE i
+
+9) It is not done due to how the clock cycle works. Can not do more than two operations on a single cycle.
+
+12) poptwo1 MAR=SP=SP-1;rd
+    poptwo2
+    poptwo3 TOS=MDR;
+    poptwo4 MAR=SP=SP-1;rd
+    poptwo5
+    poptwo6 TOS=MDR; goto Main1
+
+15 a) The arithmatetic equivalent is diving by 2
+   b) ishl MAR=SP=SP-1;rd
+      ish2 MAR=SP=SP-1
+      ish3 H=MDR;rd
+      ish4 MAR=SP=SP-1;rd
+      ish5
+      ish6 
+      //far as I got.

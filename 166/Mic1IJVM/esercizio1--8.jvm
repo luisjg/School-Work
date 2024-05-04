@@ -1,0 +1,38 @@
+    /**********************************************************/
+    /* Esercizio n.1 sulla macchina IJVM riferito al quesito  */
+       n.8 del TANENBAUM
+    /**********************************************************/
+
+
+.method calcola(j,k) // Calcola il valore di i=(j-k-6)*2.
+
+.var
+i
+.end-var
+
+ILOAD j 
+ILOAD k 
+ISUB 
+BIPUSH 6 
+ISUB 
+DUP 
+IADD 
+ISTORE i 
+// in questo punto finisce la soluzione del problema il resto viene 
+// utilizzato per produrre sullo standard I/O il risultato finale
+
+Iload i 
+OUT     // questa istruzione è utile soltanto per stampare sullo
+        // standard I/O il risultato finale presente sulla variabile "i"
+
+Ireturn
+.end-method
+
+.main
+IN       // permette di acquisire dallo Standard I/O il valore di j
+IN       // permette di acquisire dallo Standard I/O il valore di k
+
+Invokevirtual calcola
+
+Halt
+.end-main

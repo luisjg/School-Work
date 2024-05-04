@@ -1,0 +1,87 @@
+    /**********************************************************/
+       Esercizio sulla macchina IJVM che permette di ottenere,
+       con la traduzione in Assembly IJVM, il calcolo della
+       formula [((a*b)+(c*d)) div e] prendendo dallo Standard I/O
+       i valori dei parametri
+    /**********************************************************/
+
+.constant
+OBJREF 0
+.end-constant
+
+.method div(m,n) 
+.var
+i
+.end-var
+// Inserimento delle istruzioni del metodo div.
+
+BIPUSH 0 
+       ISTORE i 
+rit:   ILOAD m 
+       ILOAD n 
+       ISUB 
+       DUP 
+       ISTORE m 
+       IFLT fine 
+       IINC i  1 
+       GOTO rit 
+fine: ILOAD i 
+       IRETURN 
+
+.end-method
+
+
+
+
+.method mul(m,n) 
+// Inserimento delle istruzioni del metodo mul.
+
+ILOAD n 
+rit:   IINC m  -1 
+       ILOAD m 
+       IFEQ fine 
+       ILOAD n 
+       IADD 
+       GOTO rit 
+fine: IRETURN 
+.end-method
+
+
+
+
+// Il metodo che esegue l'istruzione  ((a*b)+(c*d)) div e   è: 
+.method ex(a,b,c,d,e)
+.var
+i
+j
+.end-var
+LDCW OBJREF
+ILOAD a 
+ILOAD b
+INVOKEVIRTUAL mul 
+Istore i
+LDCW OBJREF
+ILOAD c 
+ILOAD d
+INVOKEVIRTUAL mul
+Istore j
+LDCW OBJREF
+ILOAD i
+ILOAD j
+IADD 
+ILOAD e 
+INVOKEVIRTUAL div 
+IRETURN
+.end-method
+
+
+.main
+LDCW OBJREF
+IN  //permette di inserire dallo Standard I/O il valore di a
+IN  //permette di inserire dallo Standard I/O il valore di b
+IN  //permette di inserire dallo Standard I/O il valore di c
+IN  //permette di inserire dallo Standard I/O il valore di d
+IN  //permette di inserire dallo Standard I/O il valore di e
+invokevirtual ex
+Halt
+.end-main

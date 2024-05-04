@@ -1,0 +1,56 @@
+    /**********************************************************/
+    /* ESERCIZIO n.9   della PAGINA WEB                       */
+    /**********************************************************/
+
+// In IJVM non abbiamo l'istruzione di Moltiplicazione ne' quella
+// di Divisione Intera. Scrivere del codice IJVM che realizzi queste
+// funzioni matematiche. 
+// Fate partire dal main uno dei due metodi a disposizione per 
+// testarne la correttezza.
+
+
+.constant
+OBJREF 0
+.end-constant
+
+.method  mul(m, n) 
+         ILOAD m 
+         IFEQ term
+         GOTO iniz
+term: BIPUSH 0
+         GOTO fine
+iniz:   ILOAD n 
+rit:     IINC m  -1 
+         ILOAD m 
+         IFEQ fine 
+         ILOAD n 
+         IADD 
+         GOTO rit 
+fine:   IRETURN 
+.end-method 
+
+
+.method div(m,n) 
+       BIPUSH 0 
+rit:   ILOAD m 
+       ILOAD n 
+       ISUB 
+       DUP 
+       ISTORE m 
+       IFLT fine 
+       BIPUSH 1 
+       IADD 
+       GOTO rit 
+fine: IRETURN 
+.end-method 
+
+
+.main
+
+IN
+IN
+// invocare sotto queste due righe uno dei due metodi definiti con
+// i parametri m ed n introdotti tramite l'istruzioni IN
+
+HALT
+.end-main

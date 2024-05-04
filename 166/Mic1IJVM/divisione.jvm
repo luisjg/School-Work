@@ -1,0 +1,38 @@
+    /**********************************************************/
+       Questo rappresenta un metodo che sviluppa la divisione 
+       tra due numeri interi.
+    /**********************************************************/
+
+.constant 
+OBJREF 0
+.end-constant
+
+.method div(m,n) 
+.var
+ i
+.end-var
+
+BIPUSH 0 
+       ISTORE i 
+rit:   ILOAD m 
+       ILOAD n 
+       ISUB 
+       DUP 
+       ISTORE m 
+       IFLT fine 
+       IINC i  1 
+       GOTO rit 
+fine: ILOAD i 
+       IRETURN 
+.end-method
+
+
+
+.main
+LDCW OBJREF
+IN   // permette di inserire il valore di m
+IN   // permette di inserire il valore di n
+invokevirtual div
+
+halt
+.end-main

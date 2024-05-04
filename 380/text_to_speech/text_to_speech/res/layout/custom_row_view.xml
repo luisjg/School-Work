@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:paddingBottom="10dip"
+    android:paddingLeft="10dip"
+    android:paddingRight="10dip"
+    android:paddingTop="10dip" >
+
+    <TextView
+        android:id="@+id/PrevName"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#C20000"
+        android:layout_marginLeft="33dp"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:text="test" />
+<!--  
+    <TextView
+        android:id="@+id/DestinationFileName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+-->
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/PrevName"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="1dp"
+        android:src="@drawable/audio_wav" />
+
+</RelativeLayout>

@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/relativeLayout0"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/background" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/lblMainMenu"
+        android:textSize="25dp" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/textView1"
+        android:layout_centerHorizontal="true"
+        android:background="#FFFFFF" />
+
+    <Button
+        android:id="@+id/btnSaved2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txtInput2"
+        android:layout_below="@+id/imageView4"
+        android:layout_marginTop="5dp"
+        android:text="@string/btnSaved" />
+
+    <Button
+        android:id="@+id/btnSpeak2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btnSaved2"
+        android:layout_alignBottom="@+id/btnSaved2"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="5dp"
+        android:text="@string/btnSpeak" />
+
+    <EditText
+        android:id="@+id/txtInput2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/progressBar1"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/imageView5"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:gravity="left"
+        android:hint="Type text here"
+        android:inputType="textMultiLine"
+        android:textColor="#808080" />
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/txtInput2" >
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/nav_layout_background_sm" />
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/imageView1"
+            android:layout_alignParentLeft="true"
+            android:background="#000000" >
+
+            <Button
+                android:id="@+id/btnNavMain2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="21dp"
+                android:background="#000000"
+                android:clickable="true"
+                android:text="@string/btnNavMain"
+                android:textColor="#FFFFFF" />
+
+            <Button
+                android:id="@+id/btnNavSaved2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="43dp"
+                android:layout_toRightOf="@+id/btnNavMain2"
+                android:background="#000000"
+                android:text="@string/btnNavSaved"
+                android:textColor="#FFFFFF" />
+
+            <Button
+                android:id="@+id/btnNavShare2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="43dp"
+                android:layout_toRightOf="@+id/btnNavSaved2"
+                android:background="#000000"
+                android:text="@string/btnNavShare"
+                android:textColor="#FFFFFF" />
+
+            <Button
+                android:id="@+id/btnNavImport2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="21dp"
+                android:background="#000000"
+                android:text="@string/btnNavImport"
+                android:textColor="#FFFFFF" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="fill_parent"
+            android:layout_height="10dp"
+            android:layout_above="@+id/relativeLayout2"
+            android:layout_alignParentLeft="true"
+            android:background="#000000" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/speakeasy" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/btnSaved2"
+        android:layout_marginTop="5dp"
+        android:background="#FFFFFF" />
+    <!--
+    <ToggleButton
+        android:id="@+id/button11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/headphones_down"
+        android:layout_centerHorizontal="true"
+        android:textOff="SHOW"
+        android:textOn="HIDE" />
+
+    <ImageButton
+        android:id="@+id/imageButton12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/button11"
+        android:layout_toRightOf="@+id/btnSaved2"
+        android:src="@drawable/keyboard_32x32" />
+    -->
+
+    <ProgressBar
+        android:id="@+id/progressBar1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:visibility="invisible" />
+    <!--
+    <ImageView
+        android:id="@+id/play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/textView1"
+        android:layout_alignTop="@+id/headphones_down"
+        android:src="@drawable/play_32x32" />
+
+    <ImageView
+        android:id="@+id/btnListItems"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/btnClear"
+        android:layout_marginLeft="15dp"
+        android:layout_toRightOf="@+id/btnSaved2"
+        android:src="@drawable/list_32x32" />
+
+    
+	<ImageView
+        android:id="@+id/btnDeleteList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/play"
+        android:layout_toLeftOf="@+id/btnSpeak2"
+        android:src="@drawable/delete_list_32x32" />
+    -->
+
+    <ImageView
+        android:id="@+id/headphones_down"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/txtInput2"
+        android:layout_alignRight="@+id/txtInput2"
+        android:layout_marginBottom="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/headphones_selector" />
+
+    <ImageView
+        android:id="@+id/btnClear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/progressBar1"
+        android:layout_alignLeft="@+id/headphones_down"
+        android:src="@drawable/clear_32x32" />
+
+    <ImageView
+        android:id="@+id/keyboard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnClear"
+        android:layout_alignLeft="@+id/btnClear"
+        android:layout_marginBottom="14dp"
+        android:background="@drawable/keyboard_selector" />
+
+</RelativeLayout>

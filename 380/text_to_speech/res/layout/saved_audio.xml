@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/relativeLayout1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/background" >
+
+    <TextView
+        android:id="@+id/textViewSavedAudio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/lblSavedAudio"
+        android:textSize="25dp" />
+
+    <ImageView
+        android:id="@+id/imageViewHL2"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textViewSavedAudio"
+        android:background="#FFFFFF" />
+
+    <Button
+        android:id="@+id/btnClearSaved"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/srListView"
+        android:layout_below="@+id/imageViewHL2"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:text="@string/btnClearSaved" />
+
+    <Button
+        android:id="@+id/btnDoneSaved3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btnClearSaved"
+        android:layout_alignBottom="@+id/btnClearSaved"
+        android:layout_alignLeft="@+id/srListView"
+        android:text="@string/btnDoneSaved" />
+
+    <ImageView
+        android:id="@+id/imageViewHL"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_alignBottom="@+id/btnDoneSaved3"
+        android:layout_alignParentLeft="true"
+        android:background="#FFFFFF" />
+
+
+
+    <ListView
+        android:id="@+id/srListView"
+        android:layout_width="fill_parent"
+        android:layout_height="324dp"
+        android:layout_above="@+id/ImageView02"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/btnClearSaved"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:gravity="left"
+        android:textColor="#808080" >
+
+        
+    </ListView>
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="fill_parent"
+        android:layout_height="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:background="#000000" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/imageView3"
+        android:layout_alignParentLeft="true"
+        android:background="@drawable/nav_layout_background_sm" />
+
+    <ImageView
+        android:id="@+id/ImageView01"
+        android:layout_width="fill_parent"
+        android:layout_height="10dp"
+        android:layout_above="@+id/imageView1"
+        android:layout_alignParentLeft="true"
+        android:background="#000000" />
+
+    <ImageView
+        android:id="@+id/ImageView02"
+        android:layout_width="fill_parent"
+        android:layout_height="10dp"
+        android:layout_above="@+id/ImageView01"
+        android:layout_alignParentLeft="true"
+        android:background="#000000" />
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/srListView"
+        android:layout_alignTop="@+id/ImageView01" >
+
+        <Button
+            android:id="@+id/btnNavMain3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="21dp"
+            android:background="#000000"
+            android:clickable="true"
+            android:text="@string/btnNavMain"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/btnNavSaved3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="43dp"
+            android:layout_toRightOf="@+id/btnNavMain3"
+            android:background="#000000"
+            android:text="@string/btnNavSaved"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/btnNavShare3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="43dp"
+            android:layout_toRightOf="@+id/btnNavSaved3"
+            android:background="#000000"
+            android:text="@string/btnNavShare"
+            android:textColor="#FFFFFF" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btnNavImport3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/ImageView01"
+        android:layout_alignRight="@+id/srListView"
+        android:background="#000000"
+        android:layout_marginRight="10dp"
+        android:text="@string/btnNavImport"
+        android:textColor="#FFFFFF" />
+
+
+</RelativeLayout>

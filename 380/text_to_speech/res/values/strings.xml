@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, Text_to_speechActivity!</string>
+    <string name="app_name">SpeakEasy</string>
+    <string name="btnSaved">Saved</string>
+    <string name="btnSpeak">Speak</string>
+    <string name="btnNavMain">Main</string>
+    <string name="btnNavSaved">Saved</string>
+    <string name="btnNavShare">Share</string>
+    <string name="btnNavImport">Import</string>
+    <string name="txtInput">Type text here.</string>
+    <string name="lblSavedAudio">Saved Audio</string>
+    <string name="btnClearSaved">Delete All</string>
+    <string name="btnDoneSaved">Done</string>
+    <string name="btnTest">Test</string>
+    <string name="lblShare">Share</string>
+    <string name="lblShareMsg">Save lives! Help us promote safe texting while driving by sharing this app with your friends.</string>
+    <string name="btnShareEmail">Share by E-mail</string>
+    <string name="btnShareTweet">Tweet This</string>
+    <string name="btnShareFacebook">Post on Facebook</string>
+    <string name="loading">loading...</string>
+    <string name="lblMainMenu">Main Menu</string>
+
+</resources>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@drawable/background" >
+    
+   <LinearLayout 
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal"
+       android:gravity="center" >
+       
+     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lblShare" 
+        android:textSize="25dp"/>  
+       
+   </LinearLayout>
+   
+   <ImageView
+       android:layout_width="fill_parent"
+       android:layout_height="1dp"
+       android:background="#FFFFFF" />
+   
+   <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/lblShareMsg" 
+        android:layout_marginRight="5dp" 
+        android:layout_marginLeft="5dp" 
+        android:layout_marginTop="5dp" 
+        android:layout_marginBottom="5dp" 
+        android:gravity="center"/> 
+        
+   <ImageView
+       android:layout_width="fill_parent"
+       android:layout_height="1dp"
+       android:background="#FFFFFF" />
+    
+    <Button
+            android:id="@+id/btnShareEmail"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btnShareEmail"
+            android:layout_marginTop="10dp" 
+            android:layout_marginLeft="5dp" 
+            android:layout_marginRight="5dp"/>
+    
+    <Button
+            android:id="@+id/btnShareTweet"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btnShareTweet"
+            android:layout_marginTop="5dp" 
+            android:layout_marginLeft="5dp" 
+            android:layout_marginRight="5dp"/>
+    
+    <Button
+            android:id="@+id/btnShareFacebook"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btnShareFacebook" 
+            android:layout_marginTop="5dp" 
+            android:layout_marginLeft="5dp" 
+            android:layout_marginRight="5dp" 
+            android:layout_marginBottom="173dp"/>
+   
+    <ImageView
+	    android:layout_width="fill_parent"
+	    android:layout_height="10dp"
+	    android:background="#000000" />
+    
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" 
+        android:orientation="horizontal"
+        android:gravity="center" 
+        android:background="#000000">
+     
+      <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" 
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_weight="25" >
+          
+        <Button
+            android:id="@+id/btnNavMain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btnNavMain" 
+            android:textColor="#FFFFFF" 
+            android:background="#000000"/>
+       </LinearLayout>
+        
+      <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" 
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_weight="25" >
+        
+        <Button
+            android:id="@+id/btnNavSaved"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btnNavSaved" 
+            android:textColor="#FFFFFF" 
+            android:background="#000000"/>
+       </LinearLayout>
+        
+       <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" 
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_weight="25" >"
+         
+        <Button
+            android:id="@+id/btnNavShare"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btnNavShare" 
+            android:textColor="#FFFFFF" 
+            android:background="#000000"/>
+       </LinearLayout>
+       
+       <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" 
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_weight="25" >
+        
+        <Button
+            android:id="@+id/btnNavImport"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btnNavImport" 
+            android:textColor="#FFFFFF" 
+            android:background="#000000"/>
+       </LinearLayout>   
+        
+    </LinearLayout>
+    
+    <ImageView
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:background="#000000" />
+    
+
+</LinearLayout>
